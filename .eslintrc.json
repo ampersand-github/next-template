@@ -1,3 +1,10 @@
 {
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["import-access"],
+  "rules": {
+    "import-access/jsdoc": ["error"]
+  },
   "extends": ["next/core-web-vitals", "prettier"]
 }
