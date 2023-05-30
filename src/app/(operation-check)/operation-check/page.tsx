@@ -2,8 +2,7 @@ import {
   PartsA1,
   PartsA2,
 } from "@/app/(operation-check)/operation-check/_components";
-
-// import { PartsA3 } from "@/app/(operation-check)/operation-check/_components/parts-a-3/parts-a-3";
+import { Button } from "@/components/ui/button";
 
 export default async function Page() {
   return (
@@ -12,6 +11,7 @@ export default async function Page() {
       <PartsA1 />
       <PartsA2 />
       {/* <PartsA3 /> */}
+      <Button />
     </div>
   );
 }
