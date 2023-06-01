@@ -1,10 +1,15 @@
 {
+  "root": true,
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "plugins": ["import-access"],
   "rules": {
-    "import-access/jsdoc": ["error"]
+    "import-access/jsdoc": ["error", { "defaultImportability": "package" }]
   },
-  "extends": ["next/core-web-vitals", "prettier"]
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:storybook/recommended"
+  ]
 }
