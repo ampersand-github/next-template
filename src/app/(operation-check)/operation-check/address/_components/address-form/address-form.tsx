@@ -1,6 +1,5 @@
 "use client";
 
-import { AddressSelectDialog } from "@/app/(operation-check)/operation-check/address/_components/address-form/address-select-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -13,10 +12,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { atom, useAtom } from "jotai/index";
+import { atom, useAtom } from "jotai";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { AddressSelectDialog } from "./address-select-dialog";
 
 export const selectedAddressAtom = atom<AddressProps>({
   prefecture: "",
@@ -85,7 +85,7 @@ export const AddressForm = () => {
     setIsLoading(true);
     const url = "https://zipcloud.ibsnet.co.jp/api/search";
     const response = await fetch(`${url}?zipcode=${postalCode}`);
-    const { status, results } = await response.json();
+    const { results } = await response.json();
     console.log(results);
     if (results.length === 1) {
       const { address1, address2, address3 } = results[0];

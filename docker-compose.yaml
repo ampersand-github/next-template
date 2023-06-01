@@ -1,0 +1,27 @@
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# 開発環境用
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+version: '3.9'
+services:
+  mysql:
+    container_name: 'next-template-mysql'
+    platform: linux/amd64
+    image: mysql:8.0.26
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+      - TZ="Asia/Tokyo"
+    ports:
+      - ${DB_PORT}:3306
+    command: --default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0
+    volumes:
+      - .db/db:/var/lib/mysql
+      - .db/logs:/var/log/mysql
+      - .db/sql:/docker-entrypoint-initdb.d
+volumes:
+  db-store:

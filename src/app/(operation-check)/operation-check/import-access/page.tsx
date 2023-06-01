@@ -1,7 +1,7 @@
 import {
   PartsA1,
   PartsA2,
-} from "@/app/(operation-check)/operation-check/_components";
+} from "@/app/(operation-check)/operation-check/import-access/_components";
 import { Button } from "@/components/ui/button";
 
 export default async function Page() {

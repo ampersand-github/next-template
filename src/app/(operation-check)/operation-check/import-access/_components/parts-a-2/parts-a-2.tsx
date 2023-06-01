@@ -1,4 +1,4 @@
-import { PartsA1 } from "@/app/(operation-check)/operation-check/_components";
+import { PartsA1 } from "@/app/(operation-check)/operation-check/import-access/_components";
 
 /**
  * @package
