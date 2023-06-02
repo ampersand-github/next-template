@@ -5,6 +5,7 @@ export default function Home() {
   const STRING_NUMERIC_INPUT = "operation-check/string-numeric-input";
   const ADDRESS = "operation-check/address";
   const IMPORT_ACCESS = "operation-check/import-access";
+  const AUTH = "operation-check/auth";
   return (
     <main className="flex min-h-screen flex-col items-center space-y-12 p-24">
       <h1 className="text-4xl font-bold">Hello, world!</h1>
@@ -16,6 +17,9 @@ export default function Home() {
       </Button>
       <Button asChild>
         <Link href={IMPORT_ACCESS}>import-access</Link>
+      </Button>
+      <Button asChild>
+        <Link href={AUTH}>ログイン</Link>
       </Button>
     </main>
   );
