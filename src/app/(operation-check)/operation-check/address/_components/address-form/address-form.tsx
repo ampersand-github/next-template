@@ -79,7 +79,7 @@ export const AddressForm = () => {
     form.setValue("prefecture", selectedAddress.prefecture);
     form.setValue("city", selectedAddress.city);
     form.setValue("town", selectedAddress.town);
-  }, [selectedAddress]);
+  }, [form, selectedAddress]);
 
   const autofillFromZipcode = async (postalCode: string) => {
     setIsLoading(true);
