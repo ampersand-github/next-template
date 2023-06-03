@@ -71,7 +71,7 @@ export const AddressForm = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
-    toast({ description: "送信しました",variant: "success" },);
+    toast({ description: "送信しました", variant: "success" });
   };
 
   return (

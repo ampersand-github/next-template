@@ -20,13 +20,12 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-
   },
   decorators: [
     (Story) => (
       <div>
         <Story />
-        <Toaster/>
+        <Toaster />
       </div>
     ),
   ],
