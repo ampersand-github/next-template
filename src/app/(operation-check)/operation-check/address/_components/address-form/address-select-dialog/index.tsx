@@ -17,14 +17,11 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAtom } from "jotai";
 import { useForm } from "react-hook-form";
-import {
-  AddressProps,
-  isAddressSelectDialogOpenAtom,
-  selectedAddressAtom,
-} from "../../address-form/address-form";
+import { isAddressSelectDialogOpenAtom, selectedAddressAtom } from "../";
+import { IAddress } from "../address-interface";
 
 type props = {
-  items: [AddressProps, ...AddressProps[]];
+  items: [IAddress, ...IAddress[]];
 };
 
 export const AddressSelectDialog = ({ items }: props) => {

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useAtom } from "jotai";
-import { selectedAddressAtom } from "../address-form";
-import { AddressSelectDialog } from "./address-select-dialog";
+import { selectedAddressAtom } from "../index";
+import { initialAddress } from "../initial-address";
+import { AddressSelectDialog } from "./index";
 
 const meta: Meta<typeof AddressSelectDialog> = {
   title: "components/operation-check/address/AddressSelectDialog",
@@ -12,7 +13,7 @@ const meta: Meta<typeof AddressSelectDialog> = {
       return (
         <>
           <Story />
-          <p>{selected}</p>
+          <p>{JSON.stringify(selected)}</p>
         </>
       );
     },
@@ -24,6 +25,6 @@ type Story = StoryObj<typeof AddressSelectDialog>;
 
 export const Default: Story = {
   args: {
-    items: ["a", "b", "c"],
+    items: [initialAddress, initialAddress],
   },
 };
