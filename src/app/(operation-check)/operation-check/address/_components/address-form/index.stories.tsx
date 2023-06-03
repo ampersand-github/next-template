@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { AddressForm } from "./address-form";
+import { AddressForm } from "./index";
 
 const meta: Meta<typeof AddressForm> = {
   title: "components/operation-check/address/AddressForm",
