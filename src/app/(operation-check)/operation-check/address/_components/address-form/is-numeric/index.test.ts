@@ -7,4 +7,4 @@ describe("isNumeric", () => {
   test("文字列型以外の数字を受け取ったとき、falseを返すべき", () => {
     expect(isNumeric("a")).toBe(false);
   });
-})
+});

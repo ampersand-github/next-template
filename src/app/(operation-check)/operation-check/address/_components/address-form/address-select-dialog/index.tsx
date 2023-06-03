@@ -6,17 +6,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAtom } from "jotai";
-import { useForm } from "react-hook-form";
 import { isAddressSelectDialogOpenAtom, selectedAddressAtom } from "../";
 import { IAddress } from "../address-interface";
 
@@ -27,7 +19,6 @@ type props = {
 export const AddressSelectDialog = ({ items }: props) => {
   const [isOpen, setIsOpen] = useAtom(isAddressSelectDialogOpenAtom);
   const [_, setSelected] = useAtom(selectedAddressAtom);
-  const form = useForm();
   const handleChange = async (data: any) => {
     console.log(data);
     setSelected(items[Number(data)]);
@@ -35,52 +26,34 @@ export const AddressSelectDialog = ({ items }: props) => {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
+    <Dialog modal={true} open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
       {/*
          <DialogTrigger asChild>
         <Button variant="outline">Edit Profile</Button>
       </DialogTrigger>
        */}
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="mt-8 max-h-[calc(100%_-_64px)] max-w-[calc(100%_-_64px)] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>住所選択</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
+            以下のリストから住所を選択してください。選択した住所は変更できます。
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem className="space-y-3">
-                <FormLabel>Notify me about...</FormLabel>
-                <FormControl>
-                  <RadioGroup
-                    onValueChange={handleChange}
-                    className="flex flex-col space-y-1"
-                  >
-                    {items.map((item, index) => {
-                      const value = `${item.prefecture} ${item.city} ${item.town}`;
-                      return (
-                        <FormItem
-                          key={index}
-                          className="flex items-center space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={String(index)} />
-                          </FormControl>
-                          <FormLabel className="font-normal">{value}</FormLabel>
-                        </FormItem>
-                      );
-                    })}
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </Form>
+
+        <RadioGroup
+          onValueChange={handleChange}
+          className="flex flex-col space-y-1"
+        >
+          {items.map((item, index) => {
+            const value = `${item.prefecture} ${item.city} ${item.town}`;
+            return (
+              <div className="flex items-center space-x-2" key={index}>
+                <RadioGroupItem value={String(index)} id={String(index)} />
+                <Label htmlFor={String(index)}>{value}</Label>
+              </div>
+            );
+          })}
+        </RadioGroup>
       </DialogContent>
     </Dialog>
   );

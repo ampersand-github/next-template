@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { atom, useAtom } from "jotai";
 import { Loader2 } from "lucide-react";
@@ -35,6 +36,7 @@ export const AddressForm = () => {
   const [candidate, setCandidate] = useAtom(candidateAddressAtom);
   const [selectedAddress] = useAtom(selectedAddressAtom);
   const [isLoading, setIsLoading] = React.useState(false);
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof addressFormSchema>>({
     resolver: zodResolver(addressFormSchema),
     defaultValues: initialAddress,
@@ -54,7 +56,7 @@ export const AddressForm = () => {
       form.setValue("city", results[0].city);
       form.setValue("town", results[0].town);
     }
-    // 029-4205
+    // メモ：029-4205は複数件ある
     if (results.length >= 2) {
       setCandidate([results[0], ...results.slice(1)]);
       setIsOpen(true);
@@ -69,13 +71,14 @@ export const AddressForm = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    toast({ description: "送信しました",variant: "success" },);
   };
 
   return (
     <Form {...form}>
       {isLoading ? (
         <div className="flex justify-center">
-          <Loader2 className="r-2 h-8 w-8 animate-spin" />
+          <Loader2 className="r-2 h-8 w-8 animate-spin " />
         </div>
       ) : (
         <>
