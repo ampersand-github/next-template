@@ -21,6 +21,7 @@ jobs:
 
       - name: echo
         run: |
+          cat .env
           echo ${{ env.DB_USER }}
           echo ${{ env.DB_PASSWORD }}
           echo ${{ env.DB_PORT }}
@@ -46,8 +47,6 @@ jobs:
           reporter: github-check
           eslint_flags: "src/"
           fail_on_error: true
-
-
 
       # docker-compose
       - name: Run Docker Compose
