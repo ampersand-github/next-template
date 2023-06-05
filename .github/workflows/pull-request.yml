@@ -14,5 +14,8 @@ jobs:
           node-version: 18
           cache: "npm"
       - run: npm ci
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
       - name: Run ESLint
         uses: npm run lint
