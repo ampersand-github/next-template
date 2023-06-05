@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code-and-above
 
       - name: Touch .env
         run: |
