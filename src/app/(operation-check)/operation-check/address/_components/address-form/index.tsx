@@ -49,6 +49,7 @@ export const AddressForm = () => {
   }, [form, selectedAddress]);
 
   const autofillFromZipcode = async (postalCode: string) => {
+    console.log(postalCode)
     setIsLoading(true);
     const results = await fetchCandidateAddress(postalCode);
     if (results.length === 1) {
