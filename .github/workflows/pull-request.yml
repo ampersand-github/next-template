@@ -14,4 +14,9 @@ jobs:
           node-version: 18
           cache: "npm"
       - run: npm ci
-      - run: npm run lint
+      - name: execute ESLint
+        uses: reviewdog/action-eslint@1
+        with:
+          workdir: ./
+          reporter: github-pr-review
+          fail_on_error: true
