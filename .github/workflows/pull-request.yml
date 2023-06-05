@@ -14,7 +14,9 @@ jobs:
           node-version: 18
           cache: "npm"
       - run: npm ci
-      - name: Run EsLint
+      - name: Run ESLint
         uses: reviewdog/action-eslint@v1
         with:
-          reporter: github-check
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Change reporter.
+
