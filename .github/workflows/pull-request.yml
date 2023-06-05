@@ -27,6 +27,7 @@ jobs:
 
       # docker-composeを最初にやるのはdockerが立ち上がってからmysqlに接続するまでにタイムラグがあるから
       # 接続できないとP1017エラーがでる
+      # ss
       - name: Run Docker Compose
         run: docker-compose --env-file .env up -d
 
