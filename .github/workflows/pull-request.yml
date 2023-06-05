@@ -37,11 +37,11 @@ jobs:
 
       - name: echo
         run: |
-          echo $DB_USER
-          echo $DB_PASSWORD
-          echo $DB_PORT
-          echo $DB_NAME
-          echo $DATABASE_URL
+          echo ${{ env.DB_USER }}
+          echo ${{ env.DB_PASSWORD }}
+          echo ${{ env.DB_PORT }}
+          echo ${{ env.DB_NAME }}
+          echo ${{ env.DATABASE_URL }}
 
       # docker-compose
       - name: Run Docker Compose
