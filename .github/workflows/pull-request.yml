@@ -26,10 +26,24 @@ jobs:
           eslint_flags: "src/"
           fail_on_error: true
 
-      # 環境変数を作る
-      # jsonファイルを作る(GCSダミー)
+      - name: Touch .env
+        run: |
+          touch .env
+          echo "DB_USER=${{ secrets.DB_USER }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+
       # docker-compose
+      - name: Run Docker Compose
+        run: npm run docker:start
+
       # prisma migrate
+      - name: Run Prisma Migrate
+        run: npm run prisma:migrate
+
+      # jsonファイルを作る(GCSダミー)
+
 
       - name: Run test
         run: npm run test
