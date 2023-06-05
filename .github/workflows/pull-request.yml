@@ -16,7 +16,7 @@ jobs:
           echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-          echo DATABASE_URL="mysql://local_user:password@localhost:3310/next_local_db?schema=public" >> .env
+          echo DATABASE_URL="mysql://${{ secrets.DB_USER }}:${{ secrets.DB_PASSWORD }}@localhost:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }}?schema=public" >> .env
 
       # あとで消す
       - name: echo
