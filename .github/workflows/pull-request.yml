@@ -14,9 +14,4 @@ jobs:
           node-version: 18
           cache: "npm"
       - run: npm ci
-      - name: Run lint check
-        run: npm run lint
-      - name: Reviewdog
-        uses: reviewdog/action-eslint@v1
-        with:
-          eslint-github-check-bright: true
+      - run: npm run lint
