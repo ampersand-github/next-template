@@ -22,7 +22,7 @@ export const Default: Story = {
   args: {
     items: [
       {
-        postCode: "1234567",
+        postCode: "1234569",
         prefecture: "東京都",
         city: "東京市",
         town: "TOKYO町",
