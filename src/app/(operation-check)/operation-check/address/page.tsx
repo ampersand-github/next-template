@@ -1,6 +1,4 @@
-// import { AddressForm } from "./_components";
-
-import { AddressForm } from "@/app/(operation-check)/operation-check/address/_components/address-form";
+import { AddressForm } from "./_components";
 
 export default async function Page() {
   return (
