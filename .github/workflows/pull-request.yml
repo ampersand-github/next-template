@@ -15,9 +15,4 @@ jobs:
           cache: "npm"
       - run: npm ci
       - name: Run ESLint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Change reporter.
-          workdir: ./src
-
+        uses: npm run lint
