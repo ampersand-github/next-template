@@ -33,7 +33,7 @@ jobs:
           echo DB_PASSWORD=password >> .env
           echo DB_PORT=3310 >> .env
           echo DB_NAME=next_local_db >> .env
-          echo DATABASE_URL=mysql://${{env.DB_USER}}:${{env.DB_PASSWORD}}@localhost:${{env.DB_PORT}}/${{env.DB_NAME}}?schema=public >> .env
+          echo DATABASE_URL=mysql://local_user:password@localhost:3310/next_local_db?schema=public >> .env
 
       - name: .envファイルをチェック
         run: |
