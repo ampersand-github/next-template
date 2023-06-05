@@ -29,10 +29,11 @@ jobs:
       - name: Touch .env
         run: |
           touch .env
-          echo "DB_USER=${{ secrets.DB_USER }}" >> .env
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
-          echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+          echo "DB_USER=password" >> .env
+          echo "DB_PASSWORD=password" >> .env
+          echo "DB_PORT=3310" >> .env
+          echo "DB_NAME=next_local_db" >> .env
+          echo "DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public" >> .env
 
       # docker-compose
       - name: Run Docker Compose
@@ -43,7 +44,6 @@ jobs:
         run: npm run prisma:migrate
 
       # jsonファイルを作る(GCSダミー)
-
 
       - name: Run test
         run: npm run test
