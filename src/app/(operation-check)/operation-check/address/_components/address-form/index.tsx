@@ -83,7 +83,7 @@ export const AddressForm = () => {
       ) : (
         <>
           <AddressSelectDialog items={candidate} />
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
             <FormField
               control={form.control}
               name="postalCode"

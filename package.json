@@ -18,7 +18,8 @@
     "docker:down": "docker-compose -p next-template-mysql down",
     "prisma:studio": "prisma studio",
     "prisma:migration": "npx prisma format && npx prisma migrate dev && npx prisma generate",
-    "prisma:deploy": "npx prisma migrate deploy"
+    "prisma:deploy": "npx prisma migrate deploy",
+    "chromatic": "npx chromatic --project-token=chpt_f10a816045e0115"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -65,6 +66,7 @@
     "@storybook/testing-library": "^0.0.14-next.2",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/jest": "^29.5.1",
+    "chromatic": "^6.18.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-import-access": "^1.1.1",
@@ -77,5 +79,7 @@
     "prisma": "^4.15.0",
     "storybook": "^7.0.18",
     "ts-jest": "^29.1.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "next-template@0.1.0"
 }
