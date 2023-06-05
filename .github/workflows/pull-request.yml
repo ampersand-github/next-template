@@ -12,17 +12,21 @@ jobs:
       - name: Touch .env
         run: |
           touch .env
-          echo DB_USER=local_user >> .env
+          echo DB_USER=${{ env.DB_USER }} >> .env
           echo DB_PASSWORD=password >> .env
           echo DB_PORT=3310 >> .env
           echo DB_NAME=next_local_db >> .env
           echo DATABASE_URL="mysql://local_user:password@localhost:3310/next_local_db?schema=public" >> .env
 
+      # あとで消す
       - name: echo
         run: |
           cat .env
 
-      # docker-compose
+      # todo jsonファイルを作る(GCSダミー)
+
+      # docker-composeを最初にやるのはdockerが立ち上がってからmysqlに接続するまでにタイムラグがあるから
+      # 接続できないとP1017エラーがでる
       - name: Run Docker Compose
         run: docker-compose --env-file .env up -d
 
@@ -47,7 +51,6 @@ jobs:
       - name: Run Prisma Migration
         run: npm run prisma:migration
 
-      # jsonファイルを作る(GCSダミー)
-
+      # テスト
       - name: Run test
         run: npm run test
