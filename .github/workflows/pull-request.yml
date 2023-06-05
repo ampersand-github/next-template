@@ -35,10 +35,6 @@ jobs:
           echo DB_NAME=next_local_db >> .env
           echo DATABASE_URL="mysql://local_user:password@localhost:3310/next_local_db?schema=public" >> .env
 
-      - name: .envファイルをチェック
-        run: |
-          if [ -f .env ]; then echo ".env exists"; else echo ".env does not exist"; fi
-
       - name: echo
         run: |
           cat .env
@@ -46,6 +42,15 @@ jobs:
       # docker-compose
       - name: Run Docker Compose
         run: docker-compose --env-file .env up -d
+
+      - name: Wait for MySQL to become ready
+        run: |
+          for i in {1..30}; do
+          nc -z localhost 3310 && echo Success && exit 0
+          echo -n .
+          sleep 1
+          done
+          echo Failed waiting for MySQL && exit 1
 
       # prisma migrate
       - name: Run Prisma Migration
