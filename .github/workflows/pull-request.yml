@@ -6,6 +6,27 @@ jobs:
   app:
     runs-on: ubuntu-latest
     steps:
+      - name: Touch .env
+        run: |
+          touch .env
+          echo DB_USER=local_user >> .env
+          echo DB_PASSWORD=password >> .env
+          echo DB_PORT=3310 >> .env
+          echo DB_NAME=next_local_db >> .env
+          echo DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public >> .env
+
+      - name: .envファイルをチェック
+        run: |
+          if [ -f .env ]; then echo ".env exists"; else echo ".env does not exist"; fi
+
+      - name: echo
+        run: |
+          echo ${{ env.DB_USER }}
+          echo ${{ env.DB_PASSWORD }}
+          echo ${{ env.DB_PORT }}
+          echo ${{ env.DB_NAME }}
+          echo ${{ env.DATABASE_URL }}
+
       - name: Check out repository
         uses: actions/checkout@v3
 
@@ -26,22 +47,7 @@ jobs:
           eslint_flags: "src/"
           fail_on_error: true
 
-      - name: Touch .env
-        run: |
-          touch .env
-          echo DB_USER=local_user >> .env
-          echo DB_PASSWORD=password >> .env
-          echo DB_PORT=3310 >> .env
-          echo DB_NAME=next_local_db >> .env
-          echo DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public >> .env
 
-      - name: echo
-        run: |
-          echo ${{ env.DB_USER }}
-          echo ${{ env.DB_PASSWORD }}
-          echo ${{ env.DB_PORT }}
-          echo ${{ env.DB_NAME }}
-          echo ${{ env.DATABASE_URL }}
 
       # docker-compose
       - name: Run Docker Compose
