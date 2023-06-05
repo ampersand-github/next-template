@@ -45,7 +45,7 @@ jobs:
 
       # docker-compose
       - name: Run Docker Compose
-        run: npm run docker:start
+        run: docker-compose --env-file .env up -d
 
       # prisma migrate
       - name: Run Prisma Migration
