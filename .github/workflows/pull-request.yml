@@ -13,9 +13,9 @@ jobs:
         run: |
           touch .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
-          echo DB_PASSWORD=password >> .env
-          echo DB_PORT=3310 >> .env
-          echo DB_NAME=next_local_db >> .env
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo DATABASE_URL="mysql://local_user:password@localhost:3310/next_local_db?schema=public" >> .env
 
       # あとで消す
