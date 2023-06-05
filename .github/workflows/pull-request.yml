@@ -12,7 +12,7 @@ jobs:
       - name: Touch .env
         run: |
           touch .env
-          echo DB_USER=${{ env.DB_USER }} >> .env
+          echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=password >> .env
           echo DB_PORT=3310 >> .env
           echo DB_NAME=next_local_db >> .env
