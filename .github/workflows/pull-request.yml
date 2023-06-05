@@ -15,7 +15,7 @@ jobs:
           cache: "npm"
       - run: npm ci
       - name: execute ESLint
-        uses: reviewdog/action-eslint@1
+        uses: reviewdog/action-eslint@v1
         with:
           workdir: ./
           reporter: github-pr-review
