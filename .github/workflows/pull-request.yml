@@ -35,12 +35,20 @@ jobs:
           echo "DB_NAME=next_local_db" >> .env
           echo "DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public" >> .env
 
+      - name: echo
+        run: |
+          echo DB_USER
+          echo DB_PASSWORD
+          echo DB_PORT
+          echo DB_NAME
+          echo DATABASE_URL
+
       # docker-compose
       - name: Run Docker Compose
         run: npm run docker:start
 
       # prisma migrate
-      - name: Run Prisma Migrate
+      - name: Run Prisma Migration
         run: npm run prisma:migration
 
       # jsonファイルを作る(GCSダミー)
