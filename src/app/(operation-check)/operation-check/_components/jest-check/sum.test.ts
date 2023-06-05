@@ -3,3 +3,7 @@ import { sum } from "@/app/(operation-check)/operation-check/_components/jest-ch
 test("adds 1 + 2 to equal 3", () => {
   expect(sum(1, 2)).toBe(3);
 });
+
+test("error", () => {
+  expect(sum(1, 2)).toBe(4);
+});

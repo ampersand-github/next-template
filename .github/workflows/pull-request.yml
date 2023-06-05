@@ -25,9 +25,9 @@ jobs:
           eslint_flags: "src/"
           fail_on_error: true
 
-# 環境変数を作る
-# jsonファイルを作る(GCSダミー)
-# docker-compose
-# prisma migrate
+      # 環境変数を作る
+      # jsonファイルを作る(GCSダミー)
+      # docker-compose
+      # prisma migrate
 
       - run: npm run test
