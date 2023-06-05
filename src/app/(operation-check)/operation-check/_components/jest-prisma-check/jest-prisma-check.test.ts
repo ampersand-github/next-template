@@ -5,5 +5,5 @@ describe("jest-prisma-check", () => {
     const count = await db.user.count();
     // console.log("count", count)
     expect(count >= 0).toBe(true);
-  })
+  });
 });
