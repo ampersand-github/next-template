@@ -29,11 +29,11 @@ jobs:
       - name: Touch .env
         run: |
           touch .env
-          echo "DB_USER=local_user" >> .env
-          echo "DB_PASSWORD=password" >> .env
-          echo "DB_PORT=3310" >> .env
-          echo "DB_NAME=next_local_db" >> .env
-          echo "DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public" >> .env
+          echo DB_USER=local_user >> .env
+          echo DB_PASSWORD=password >> .env
+          echo DB_PORT=3310 >> .env
+          echo DB_NAME=next_local_db >> .env
+          echo DATABASE_URL=mysql://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}?schema=public >> .env
 
       - name: echo
         run: |
