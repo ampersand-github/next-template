@@ -41,7 +41,7 @@ jobs:
 
       # prisma migrate
       - name: Run Prisma Migrate
-        run: npm run prisma:migrate
+        run: npm run prisma:migration
 
       # jsonファイルを作る(GCSダミー)
 
