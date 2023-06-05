@@ -30,4 +30,6 @@ jobs:
       # docker-compose
       # prisma migrate
 
-      - run: npm run test
+      - name: Run test
+        run: npm run test
+
