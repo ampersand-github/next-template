@@ -1,4 +1,5 @@
 // https://dev.classmethod.jp/articles/error-handling-practice-of-typescript/
+
 /**
  * @public
  */
