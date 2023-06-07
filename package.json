@@ -77,7 +77,9 @@
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "prisma": "^4.15.0",
+    "react-cropper": "^2.3.3",
     "storybook": "^7.0.18",
+    "storybook-addon-next": "^1.8.0",
     "ts-jest": "^29.1.0"
   },
   "readme": "ERROR: No README data found!",
