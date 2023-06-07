@@ -1,12 +1,8 @@
-import { Failure, Result, Success } from "@/lib/result";
+import { Failure, Result, Success } from "@/lib/result/result";
 
 describe("Result型", () => {
   const doSomething = (x: boolean): Result<string, Error> => {
-    if (x) {
-      return new Success("success");
-    } else {
-      return new Failure(new Error("error"));
-    }
+    return x ? new Success("success") : new Failure(new Error("error"));
   };
 
   describe("Success型", () => {
