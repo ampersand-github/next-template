@@ -1,7 +1,7 @@
 import { storage } from "@/app/api/storage";
+import { bucketName, version } from "@/app/api/storage/simple";
 import { NextApiRequest } from "next";
 import { ulid } from "ulid";
-import { bucketName, version } from "@/app/api/storage/simple";
 
 export async function GET(req: NextApiRequest) {
   // セッションの取得

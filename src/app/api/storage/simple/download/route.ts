@@ -2,8 +2,6 @@ import { storage } from "@/app/api/storage";
 import { bucketName, version } from "@/app/api/storage/simple";
 
 export async function GET(req: Request) {
-
-
   // パス
   const path = new URL(req.url as string).searchParams.get("path");
   if (!path) {
