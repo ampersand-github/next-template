@@ -3,42 +3,32 @@
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Failure, Result, Success } from "@/lib/result/result";
+import { upload } from "@/lib/storage/upload";
+import imageCompression from "browser-image-compression";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
-import { z } from "zod";
-import { cropperImageAtom } from "../../index";
+import { useState } from "react";
+import { cropperImageAtom } from "../index";
 import { CropperDialog } from "./crop-dialog";
 
-const schema = z.object({
-  message: z
-    .string({ required_error: "メッセージが取得できませんでした" })
-    .min(1, { message: "メッセージを取得できませんでした" }),
-});
-
-const uploadImage = async (): Promise<Result<string, Error>> => {
+const uploadImage = async (image: File): Promise<Result<string, Error>> => {
   try {
-    // データを送信する
-    const url = "/api/storage/simple/upload";
-    const result = await fetch(url, { method: "POST" });
+    // 結構時間かかる 10mb -> 1mbにするのに20秒かかった
+    const resizedImage = await imageCompression(image, {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 2028,
+    });
 
-    // エラーハンドリング
-    if (!result.ok) {
+    // データを送信する
+    const result: Result<string, Error> = await upload("simple", resizedImage);
+    if (result.isFailure()) {
       // todo HTTPステータスを外部のロガーに送信したい
+      console.log(result.value.message);
       const error = new Error("画像を送信できませんでした");
       return new Failure(error);
     }
 
-    // レスポンスをパースする
-    const json = await result.json();
-    const parseResult = schema.safeParse(json);
-
-    // パースしたデータのエラーハンドリング
-    if (!parseResult.success) {
-      const error = new Error(parseResult.error.errors[0].message);
-      return new Failure(error);
-    }
-
-    return new Success("画像のアップロードに成功しました");
+    return new Success(result.value);
   } catch (e) {
     if (e instanceof Error) {
       return new Failure(e);
@@ -49,20 +39,37 @@ const uploadImage = async (): Promise<Result<string, Error>> => {
 
 export const ImageUploadForm = () => {
   const cropperImage = useAtomValue(cropperImageAtom);
+  const [isUploading, setUploading] = useState<boolean>(false);
   const { toast } = useToast();
 
   const handleClick = async () => {
-    const result: Result<string, Error> = await uploadImage();
+    setUploading(true);
 
-    // エラー処理
+    // 画像がない場合はエラー
+    if (!cropperImage) {
+      toast({ title: "画像を選択してください", variant: "error" });
+      setUploading(false);
+      return;
+    }
+
+    // 画像をアップロードする
+    const result = await uploadImage(cropperImage);
     if (result.isFailure()) {
       toast({ title: result.value.message, variant: "error" });
+      setUploading(false);
       throw result.value;
     }
 
+    // todo DBへ保存したパスを保存
+
     // 成功表示
-    toast({ title: result.value, variant: "success" });
+    toast({ title: "画像のアップロードに成功しました", variant: "success" });
+    setUploading(false);
   };
+
+  if (isUploading) {
+    return <div>uploading...</div>;
+  }
 
   return (
     <div className="space-y-8">
