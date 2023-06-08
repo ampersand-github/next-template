@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
-import { cropperImageAtom } from "src/app/(operation-check)/operation-check/image/index";
-import { CropperDialog } from "src/app/(operation-check)/operation-check/image/_components/image-upload-form/crop-dialog/index";
+import { cropperImageAtom } from "../../../index";
+import { CropperDialog } from "./index";
 
 const meta: Meta<typeof CropperDialog> = {
   title: "components/operation-check/crop/CropperDialog",
