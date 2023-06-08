@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { Failure, Result, Success } from "@/lib/result/result";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
 import { z } from "zod";
@@ -14,39 +15,53 @@ const schema = z.object({
     .min(1, { message: "メッセージを取得できませんでした" }),
 });
 
+const uploadImage = async (): Promise<Result<string, Error>> => {
+  try {
+    // データを送信する
+    const url = "/api/storage/simple/upload";
+    const result = await fetch(url, { method: "POST" });
+
+    // エラーハンドリング
+    if (!result.ok) {
+      // todo HTTPステータスを外部のロガーに送信したい
+      const error = new Error("画像を送信できませんでした");
+      return new Failure(error);
+    }
+
+    // レスポンスをパースする
+    const json = await result.json();
+    const parseResult = schema.safeParse(json);
+
+    // パースしたデータのエラーハンドリング
+    if (!parseResult.success) {
+      const error = new Error(parseResult.error.errors[0].message);
+      return new Failure(error);
+    }
+
+    return new Success("画像のアップロードに成功しました");
+  } catch (e) {
+    if (e instanceof Error) {
+      return new Failure(e);
+    }
+    return new Failure(new Error("画像のアップロードに失敗しました"));
+  }
+};
+
 export const ImageUploadForm = () => {
   const cropperImage = useAtomValue(cropperImageAtom);
   const { toast } = useToast();
 
   const handleClick = async () => {
-    let errorToastTitle = "画像のアップロードに失敗しました";
+    const result: Result<string, Error> = await uploadImage();
 
-    try {
-      // データを送信する
-      const url = "/api/storage/simple/upload";
-      const result = await fetch(url, { method: "POST" });
-
-      // エラーハンドリング
-      if (!result.ok) {
-        throw new Error(`${result.status}エラーが発生しました`);
-      }
-
-      // レスポンスをパースする
-      const json = await result.json();
-      const parseResult = schema.safeParse(json);
-
-      // パースしたデータのエラーハンドリング
-      if (!parseResult.success) {
-        errorToastTitle = parseResult.error.errors[0].message;
-        throw parseResult.error;
-      }
-
-      console.log("投稿する");
-    } catch (error: unknown) {
-      // todo エラーの外部送信
-      toast({ title: errorToastTitle, variant: "error" });
-      throw error;
+    // エラー処理
+    if (result.isFailure()) {
+      toast({ title: result.value.message, variant: "error" });
+      throw result.value;
     }
+
+    // 成功表示
+    toast({ title: result.value, variant: "success" });
   };
 
   return (
