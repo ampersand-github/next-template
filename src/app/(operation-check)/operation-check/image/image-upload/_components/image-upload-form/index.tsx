@@ -2,35 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Failure, Result, Success } from "@/lib/result/result";
-import { upload } from "@/lib/storage/upload";
-import imageCompression from "browser-image-compression";
 import { atom, useAtomValue } from "jotai";
 import Image from "next/image";
 import { useState } from "react";
 import { CropperDialog } from "./crop-dialog";
+import { uploadImage } from "./upload-image";
 
 export const cropperImageAtom = atom<File | undefined>(undefined);
-
-const uploadImage = async (image: File): Promise<Result<string, Error>> => {
-  try {
-    // 結構時間かかる 10mb -> 1mbにするのに20秒かかった
-    const resizedImage = await imageCompression(image, {
-      maxSizeMB: 1,
-      maxWidthOrHeight: 2028,
-    });
-
-    const result: Result<string, Error> = await upload("simple", resizedImage);
-
-    if (result.isFailure()) {
-      return result;
-    }
-
-    return new Success("アップロードに成功しました");
-  } catch (e) {
-    return new Failure(new Error("画像のアップロードに失敗しました"));
-  }
-};
 
 export const ImageUploadForm = () => {
   const cropperImage = useAtomValue(cropperImageAtom);
