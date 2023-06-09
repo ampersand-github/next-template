@@ -15,7 +15,7 @@ import "cropperjs/dist/cropper.css"; // 必須 ないとレイアウトが崩れ
 import { useSetAtom } from "jotai";
 import React, { createRef } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
-import { cropperImageAtom } from "src/app/(operation-check)/operation-check/image/index";
+import { cropperImageAtom } from "../index";
 
 export const CropperDialog = () => {
   const [isOpen, setIsOpen] = React.useState(false);
