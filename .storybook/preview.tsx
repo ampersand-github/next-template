@@ -3,6 +3,10 @@ import "../src/app/globals.css";
 // @ts-ignore
 // TS2307: Cannot find module '@/components/ui/toaster' or its corresponding type declarations.
 import { Toaster } from "@/components/ui/toaster";
+import { initialize, mswLoader } from "msw-storybook-addon";
+
+// Initialize MSW
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -21,6 +25,7 @@ const preview: Preview = {
       },
     },
   },
+  loaders: [mswLoader],
   decorators: [
     (Story) => (
       <div>
