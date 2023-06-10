@@ -1,2 +1,2 @@
-export const bucketName = "simple-aaa";
+export const bucketName = "operation-check";
 export const version = "v1";

@@ -1,6 +1,7 @@
+import { env } from "@/env.mjs";
 import { Storage } from "@google-cloud/storage";
 
 export const storage = new Storage({
-  projectId: "startup-template2-stagin-79af5",
-  keyFilename: "startup-template2-stagin-79af5-ssss.json",
+  projectId: env.GCP_PROJECT_ID,
+  keyFilename: "next-template-staging.json",
 });

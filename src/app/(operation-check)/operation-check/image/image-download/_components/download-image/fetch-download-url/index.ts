@@ -10,7 +10,7 @@ const schema = z.object({
 
 export const fetchDownloadUrl = async (): Promise<Result<string, Error>> => {
   // 値を直に入れているが、本当はDBから取得するべき
-  const imagePath = "01H2D5K0ZS7X12PW0YY5FJHV1W";
+  const imagePath = "01H2HM0XHA7GAFV5BVPD2HFCTX";
   const origin = env.NEXT_PUBLIC_ORIGIN;
   const nextApiUrl = new URL(`${origin}/api/storage/simple/download`);
   nextApiUrl.searchParams.append("path", imagePath);

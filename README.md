@@ -1,9 +1,13 @@
 # README
 
-## クローンしたら
+## クローンしたときにすること
 
 - `npm install`
 - env ファイルを作成
+
+## 作業毎にすること
+
+- `npm run docker:start`
 
 ## コーディング規約
 
