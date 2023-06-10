@@ -6,6 +6,8 @@ export default function Home() {
   const ADDRESS = "operation-check/address";
   const IMPORT_ACCESS = "operation-check/import-access";
   const AUTH = "operation-check/auth";
+  const IMAGE_UPLOAD = "operation-check/image/image-upload";
+  const IMAGE_DOWNLOAD = "operation-check/image/image-download";
   return (
     <main className="flex min-h-screen flex-col items-center space-y-12 p-24">
       <h1 className="text-4xl font-bold">Hello, world!</h1>
@@ -20,6 +22,12 @@ export default function Home() {
       </Button>
       <Button asChild>
         <Link href={AUTH}>ログイン</Link>
+      </Button>
+      <Button asChild>
+        <Link href={IMAGE_UPLOAD}>イメージのアップロード</Link>
+      </Button>
+      <Button asChild>
+        <Link href={IMAGE_DOWNLOAD}>イメージのダウンロード</Link>
       </Button>
     </main>
   );

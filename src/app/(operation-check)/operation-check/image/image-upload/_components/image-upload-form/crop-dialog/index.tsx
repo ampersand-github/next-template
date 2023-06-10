@@ -10,12 +10,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { convertDataUrlToFile } from "@/lib/convert-data-url-to-file";
+import { convertDataUrlToFile } from "@/lib/storage/convert-data-url-to-file";
 import "cropperjs/dist/cropper.css"; // 必須 ないとレイアウトが崩れる
 import { useSetAtom } from "jotai";
 import React, { createRef } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
-import { cropperImageAtom } from "../../index";
+import { cropperImageAtom } from "../index";
 
 export const CropperDialog = () => {
   const [isOpen, setIsOpen] = React.useState(false);

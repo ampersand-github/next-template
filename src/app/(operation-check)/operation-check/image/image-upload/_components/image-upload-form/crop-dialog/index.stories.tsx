@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
-import { cropperImageAtom } from "../../index";
+import { cropperImageAtom } from "../index";
 import { CropperDialog } from "./index";
 
 const meta: Meta<typeof CropperDialog> = {

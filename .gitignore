@@ -40,6 +40,7 @@ next-env.d.ts
 .db/db
 .db/logs
 *.log
+next-template-*.json
 
 # shadcnからインポートされたものは手動で指定したディレクトリに移動すること
 components/ui
