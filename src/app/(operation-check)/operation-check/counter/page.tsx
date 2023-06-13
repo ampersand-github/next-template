@@ -13,26 +13,6 @@ export default async function Page() {
   });
   const count = result ? result.count : 0;
 
-  /*
-  const aaa = await fetch(`${env.NEXT_PUBLIC_ORIGIN}/api/counter`, {
-    // cache: "no-cache",
-    headers: { "Content-Type": "application/json",
-    "Authorization":`token ${user.id}`
-    },
-
-  });
- */
-
-  /*
-   const plusOne = async () => {
-    await db.counter.upsert({
-      create: { count: 1, user_id: user.id },
-      update: { count: count + 1 },
-      where: { user_id: user.id },
-    });
-  };
-   */
-
   return (
     <main className="space-y-8 p-24">
       <h1 className="text-4xl font-bold">counter</h1>
