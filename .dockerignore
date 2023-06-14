@@ -1,0 +1,8 @@
+Dockerfile
+.dockerignore
+node_modules
+README.md
+.next
+.git
+.DS_Store
+# envを追加したい
