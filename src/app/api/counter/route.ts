@@ -16,7 +16,7 @@ export async function PATCH(req: Request) {
     create: { user_id: user.id, count },
     update: { count },
   });
-  console.log(update)
+  console.log(update);
 
   // todo Result型で返す
   return new Response(JSON.stringify({ isOk: true }));
