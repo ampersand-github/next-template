@@ -1,9 +1,8 @@
 import { storage } from "@/app/api/storage";
 import { bucketName, version } from "@/app/api/storage/simple";
-import { NextApiRequest } from "next";
 import { ulid } from "ulid";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: Request) {
   // セッションの取得
   // const session = await getCurrentUser();
 
