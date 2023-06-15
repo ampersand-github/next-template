@@ -10,7 +10,7 @@ import GitHubProvider from "next-auth/providers/github";
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
-  pages: { signIn: "/login" },
+  pages: { signIn: "/operation-check/auth" },
   providers: [
     GitHubProvider({
       clientId: env.GITHUB_CLIENT_ID,

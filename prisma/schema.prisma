@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Account {
@@ -59,6 +60,7 @@ model User {
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+  counter                counter[]
 
   @@map(name: "users")
 }
@@ -84,4 +86,15 @@ model Post {
   author User @relation(fields: [authorId], references: [id])
 
   @@map(name: "posts")
+}
+
+model teble1 {
+  id String @id @default(cuid())
+}
+
+model counter {
+  user_id String @id
+  count   Int    @default(0)
+
+  userId User @relation(fields: [user_id], references: [id])
 }
