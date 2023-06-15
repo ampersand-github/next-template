@@ -27,6 +27,7 @@ steps:
         "GCP_CLIENT_EMAIL=${_GCP_CLIENT_EMAIL}",
         "-t",
         "${_REGISTRY}",
+        "."
       ]
     id: Build
 
