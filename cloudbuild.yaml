@@ -27,29 +27,36 @@ steps:
         "GCP_CLIENT_EMAIL=${_GCP_CLIENT_EMAIL}",
         "-t",
         "${_REGISTRY}",
-        "."
+        ".",
       ]
     id: Build
 
-#   # プッシュ
-#   - name: 'gcr.io/cloud-builders/docker'
-#     args: ['push', '${_REGISTRY}']
-#     id: Push
-#
-#   # デプロイ
-#   - name: 'gcr.io/cloud-builders/gcloud'
-#     args: [
-#       'run', 'deploy', '${_DEPLOY}',
-#       '--image', '${_REGISTRY}',
-#       '--region', 'asia-northeast1',
-#       '--platform', 'managed',
-#       '--allow-unauthenticated',
-#       '--add-cloudsql-instances', 'startup-template2-stagin-79af5:asia-northeast1:startup-template2-db'
-#     ]
-#     id: Deploy
-#
-# images:
-#   - ${_REGISTRY}
+  # プッシュ
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "${_REGISTRY}"]
+    id: Push
+
+  # デプロイ
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "${_DEPLOY}",
+        "--image",
+        "${_REGISTRY}",
+        "--region",
+        "asia-northeast1",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated"
+        # "--add-cloudsql-instances",
+        # "startup-template2-stagin-79af5:asia-northeast1:startup-template2-db",
+      ]
+    id: Deploy
+
+images:
+  - ${_REGISTRY}
 
 substitutions:
   _IMAGE_NAME: "docker_image"
