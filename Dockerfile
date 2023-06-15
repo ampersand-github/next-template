@@ -25,20 +25,29 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# todo envファイルを作成したい
-# ARG NEXT_PUBLIC_FIREBASE_API_KEY
-# ARG NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-# ARG NEXT_PUBLIC_FIREBASE_PROJECT_ID
-# ARG NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-# ARG NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-# ARG NEXT_PUBLIC_FIREBASE_APP_ID
-# ARG NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-# ARG NEXT_PUBLIC_FIREBASE_DATABASE_URL
-# ARG NEXT_PUBLIC_BACKEND_URL
+# Arguments that can be passed at build time
+ARG NEXT_PUBLIC_ORIGIN
+ARG DATABASE_URL
+ARG NEXTAUTH_URL
+ARG NEXTAUTH_SECRET
+ARG GITHUB_CLIENT_ID
+ARG GITHUB_CLIENT_SECRET
+ARG GITHUB_ACCESS_TOKEN
+ARG GCP_PROJECT_ID
+ARG GCP_PRIVATE_KEY
+ARG GCP_CLIENT_EMAIL
 
-# ARG DATABASE_URL
-# RUN echo $DATABASE_URL
-
+# t3-envの関係でこっちで.envを作成する
+RUN echo "NEXT_PUBLIC_ORIGIN=${NEXT_PUBLIC_ORIGIN}" >> .env \
+    && echo "DATABASE_URL=${DATABASE_URL}" >> .env \
+    && echo "NEXTAUTH_URL=${NEXTAUTH_URL}" >> .env \
+    && echo "NEXTAUTH_SECRET=${NEXTAUTH_SECRET}" >> .env \
+    && echo "GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}" >> .env \
+    && echo "GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}" >> .env \
+    && echo "GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}" >> .env \
+    && echo "GCP_PROJECT_ID=${GCP_PROJECT_ID}" >> .env \
+    && echo "GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}" >> .env \
+    && echo "GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}" >> .env
 
 # Generate prisma client
 RUN npx prisma generate
@@ -69,9 +78,13 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma/client /app/node_modules/@prisma/client
+COPY --from=builder --chown=nextjs:nodejs /app/.env ./app/.env
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma /app/node_modules/@prisma
 # npm WARN exec The following package was not found and will be installed: prisma@4.15.0対策
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma /app/node_modules/prisma
+# sh: prisma: command not found対策 おそらく、prismaの実行ファイルが必要なため
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.bin /app/node_modules/.bin
+
 COPY --chown=nextjs:nodejs start.sh ./
 
 USER nextjs
