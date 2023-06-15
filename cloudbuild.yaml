@@ -1,0 +1,49 @@
+steps:
+
+  # ビルド
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '--no-cache',
+      '--build-arg','NEXT_PUBLIC_ORIGIN=${_NEXT_PUBLIC_ORIGIN}',
+      '--build-arg','DATABASE_URL=${_DATABASE_URL}',
+      '--build-arg','NEXTAUTH_URL=${_NEXTAUTH_URL}',
+      '--build-arg','NEXTAUTH_SECRET=${_NEXTAUTH_SECRET}',
+      '--build-arg','GITHUB_CLIENT_ID=${_GITHUB_CLIENT_ID}',
+      '--build-arg','GITHUB_CLIENT_SECRET=${_GITHUB_CLIENT_SECRET}',
+      '--build-arg','GITHUB_ACCESS_TOKEN=${_GITHUB_ACCESS_TOKEN}',
+      '--build-arg','GCP_PROJECT_ID=${_GCP_PROJECT_ID}',
+      '--build-arg','GCP_PRIVATE_KEY=${_GCP_PRIVATE_KEY}',
+      '--build-arg','GCP_CLIENT_EMAIL=${_GCP_CLIENT_EMAIL}',
+      '-t', '${_REGISTRY}'
+    ]
+    id: Build
+
+#   # プッシュ
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: ['push', '${_REGISTRY}']
+#     id: Push
+#
+#   # デプロイ
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     args: [
+#       'run', 'deploy', '${_DEPLOY}',
+#       '--image', '${_REGISTRY}',
+#       '--region', 'asia-northeast1',
+#       '--platform', 'managed',
+#       '--allow-unauthenticated',
+#       '--add-cloudsql-instances', 'startup-template2-stagin-79af5:asia-northeast1:startup-template2-db'
+#     ]
+#     id: Deploy
+#
+# images:
+#   - ${_REGISTRY}
+
+substitutions:
+  _IMAGE_NAME: 'docker_image'
+  _DEPLOY: 'deploy'
+  _REGISTRY: 'asia.gcr.io/${PROJECT_ID}/${_IMAGE_NAME}'
+
+options:
+  dynamic_substitutions: true # これを追加すると、substitutionsが動的になる
+  substitution_option: 'ALLOW_LOOSE'
