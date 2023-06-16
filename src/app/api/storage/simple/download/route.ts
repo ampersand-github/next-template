@@ -2,8 +2,10 @@ import { storage } from "@/app/api/storage";
 import { bucketName, version } from "@/app/api/storage/simple";
 
 export async function GET(req: Request) {
+  console.log("GET");
   // パス
   const path = new URL(req.url as string).searchParams.get("path");
+  console.log("path", path);
   if (!path) {
     const message = JSON.stringify({ message: "path is required" });
     return new Response(message, { status: 400 });

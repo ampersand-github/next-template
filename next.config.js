@@ -9,6 +9,7 @@ const nextConfig = {
     return [
       {
         // 開発環境のストーリーブックからAPIへのアクセスを許可する
+        // todo 開発環境以外は許可しないようにする
         source: "/(.*)",
         headers: [
           {
