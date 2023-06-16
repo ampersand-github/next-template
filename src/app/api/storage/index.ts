@@ -4,6 +4,6 @@ export const storage: Storage = new Storage({
   projectId: env.GCP_PROJECT_ID,
   credentials: {
     client_email: env.GCP_CLIENT_EMAIL,
-    private_key: env.GCP_PRIVATE_KEY.split(String.raw`\n`).join('\n'),
+    private_key: env.GCP_PRIVATE_KEY.split(String.raw`\n`).join("\n"),
   },
 });
