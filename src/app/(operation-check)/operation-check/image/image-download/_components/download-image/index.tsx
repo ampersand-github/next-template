@@ -10,8 +10,8 @@ export const DownloadImage = async () => {
   const result: Result<string, Error> = await fetchDownloadUrl();
 
   if (result.isFailure()) {
-    toast({ title: "画像の取得に失敗しました", variant: "error" });
-    throw new Error(result.value.message);
+    toast({ title: "画像が取得できませんでした", variant: "error" });
+    throw new Error("画像が取得できませんでした");
   }
 
   return <DownloadImagePresenter src={result.value} />;

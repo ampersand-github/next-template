@@ -26,10 +26,9 @@ export const ImageUploadForm = () => {
     setUploading(false);
 
     if (result.isFailure()) {
-      // todo HTTPステータスを外部のロガーに送信したい
-      toast({ title: result.value.message, variant: "error" });
+      toast({ title: "アップロードに成功しました", variant: "error" });
     } else {
-      toast({ title: result.value, variant: "success" });
+      toast({ title: "画像のアップロードに失敗しました", variant: "success" });
     }
   };
 

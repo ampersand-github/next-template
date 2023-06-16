@@ -4,10 +4,12 @@ import { useState } from "react";
 
 export const GitHubButton = () => {
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
+
   const handleClick = async () => {
     setIsGitHubLoading(true);
     await signIn("github", { callbackUrl: "/" });
   };
+
   return (
     <>
       {isGitHubLoading ? (
