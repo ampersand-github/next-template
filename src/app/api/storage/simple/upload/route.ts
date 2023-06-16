@@ -16,9 +16,6 @@ export async function GET(req: Request) {
     return new Response(data, { status: 400 });
   }
 
-  console.log("fileName", fileName);
-  console.log("bucketName", bucketName);
-  console.log("version", version);
   const [response] = await storage
     .bucket(bucketName)
     .file(`${version}/${ulid().toString()}`)
@@ -27,7 +24,6 @@ export async function GET(req: Request) {
       fields: { "x-goog-meta-test": "data" },
     });
 
-  console.log("response", response);
   // レスポンスの返却
   return new Response(JSON.stringify(response), { status: 200 });
 }

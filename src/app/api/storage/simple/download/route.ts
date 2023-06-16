@@ -11,10 +11,6 @@ export async function GET(req: Request) {
     return new Response(message, { status: 400 });
   }
 
-  console.log("bucketName", bucketName);
-  console.log("version", version);
-  console.log("path", path);
-
   // 画像のダウンロード
   const urlList = await storage
     .bucket(bucketName)
@@ -25,7 +21,6 @@ export async function GET(req: Request) {
     });
 
   const url = { url: urlList[0] };
-  console.log("url", url);
   // レスポンスの返却
   return new Response(JSON.stringify(url), { status: 200 });
 }
