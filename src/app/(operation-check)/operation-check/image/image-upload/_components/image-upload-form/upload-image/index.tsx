@@ -14,9 +14,7 @@ export const uploadImage = async (
 
     const result: Result<string, Error> = await upload("simple", resizedImage);
 
-    if (result.isFailure()) {
-      return result;
-    }
+    if (result.isFailure()) return result;
 
     return new Success("アップロードに成功しました");
   } catch (e) {
