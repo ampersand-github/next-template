@@ -27,7 +27,7 @@ export async function GET(req: Request) {
       fields: { "x-goog-meta-test": "data" },
     });
 
-  console.log("response", response)
+  console.log("response", response);
   // レスポンスの返却
   return new Response(JSON.stringify(response), { status: 200 });
 }

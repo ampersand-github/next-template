@@ -1,3 +1,4 @@
+import { env } from "@/env.mjs";
 import { Failure, Result, Success } from "@/lib/result/result";
 
 /**
@@ -9,7 +10,7 @@ export const upload = async (
   // uploadType: "anonymous" | "public" | "private"
 ): Promise<Result<string, Error>> => {
   // nextのapiのurlを作成
-  const origin = window.location.origin;
+  const origin = env.NEXT_PUBLIC_ORIGIN;
   const nextApiUrl = new URL(`${origin}/api/storage/${path}/upload`);
   nextApiUrl.searchParams.append("file", image.name);
 

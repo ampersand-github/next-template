@@ -38,8 +38,7 @@ steps:
 
   # デプロイ
   - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      [
+    args: [
         "run",
         "deploy",
         "${_DEPLOY}",
@@ -49,7 +48,7 @@ steps:
         "asia-northeast1",
         "--platform",
         "managed",
-        "--allow-unauthenticated"
+        "--allow-unauthenticated",
         # "--add-cloudsql-instances",
         # "startup-template2-stagin-79af5:asia-northeast1:startup-template2-db",
       ]

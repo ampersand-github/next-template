@@ -6,7 +6,7 @@
     "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "format": "npx prettier --write .",
     "test": "jest --runInBand",
