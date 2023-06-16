@@ -43,7 +43,7 @@ type ResponseBaseType = {
 
 type ResponseType = Result<ResponseBaseType, Error>;
 
-export class CounterUpsertUseCase {
+class CounterUpsertUseCase {
   async execute({ userId, count }: RequestType): Promise<ResponseType> {
     try {
       const prismaResult = await db.$transaction(async (prisma) => {
