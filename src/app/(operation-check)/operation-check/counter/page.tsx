@@ -1,7 +1,7 @@
 import Loading from "@/app/(operation-check)/operation-check/counter/loading";
 import { getCurrentUser } from "@/lib/auth/get-current-user";
 import { db } from "@/lib/db/db";
-import { counter as PrismaCounter } from "@prisma/client";
+import { Counter as PrismaCounter } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { PlusOneButton } from "./_components";

@@ -61,6 +61,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@quramy/jest-prisma": "^1.5.0",
     "@radix-ui/react-label": "^2.0.2",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
@@ -71,8 +72,10 @@
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "@types/deep-equal": "^1.0.1",
     "@types/jest": "^29.5.1",
     "chromatic": "^6.18.0",
+    "deep-equal": "^2.2.1",
     "encoding": "^0.1.13",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",

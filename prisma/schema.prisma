@@ -6,9 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  // relationMode = "prisma"
 }
 
 model Account {
@@ -52,15 +52,15 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
 
-  accounts Account[]
-  sessions Session[]
-  Post     Post[]
-
+  accounts               Account[]
+  sessions               Session[]
+  Post                   Post[]
+  counter                Counter?
+  address                Address? // 1:1relation Userにとってaddressはオプショナル
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
-  counter                counter[]
 
   @@map(name: "users")
 }
@@ -88,13 +88,22 @@ model Post {
   @@map(name: "posts")
 }
 
-model teble1 {
-  id String @id @default(cuid())
-}
-
-model counter {
+model Counter {
   user_id String @id
   count   Int    @default(0)
+  //
+  userId  User   @relation(fields: [user_id], references: [id])
+}
 
-  userId User @relation(fields: [user_id], references: [id])
+model Address {
+  user_id    String   @unique
+  post_code  String
+  prefecture String
+  city       String
+  town       String
+  block      String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  //
+  userId     User     @relation(fields: [user_id], references: [id])
 }
