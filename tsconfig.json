@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "plugins": [{ "name": "next" }, { "name": "eslint-plugin-import-access" }],
+    "types": ["@types/jest", "@quramy/jest-prisma"],
     "paths": {
       "@/*": ["./src/*"]
     }
