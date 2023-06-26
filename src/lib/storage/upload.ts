@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { Failure, Result, Success } from "@/lib/result/result";
+import { Failure, Result, Success } from "@/lib/result";
 
 /**
  * @public

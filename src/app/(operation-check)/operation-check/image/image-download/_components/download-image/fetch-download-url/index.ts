@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { Failure, Result, Success } from "@/lib/result/result";
+import { Failure, Result, Success } from "@/lib/result";
 import { z } from "zod";
 
 const schema = z.object({

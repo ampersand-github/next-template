@@ -1,4 +1,4 @@
-import { Failure, Result, Success } from "@/lib/result/result";
+import { Failure, Result, Success } from "@/lib/result";
 import { upload } from "@/lib/storage/upload";
 import imageCompression from "browser-image-compression";
 

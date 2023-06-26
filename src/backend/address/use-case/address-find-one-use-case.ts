@@ -1,7 +1,7 @@
 import { AddressRepository } from "@/backend/address/repository";
 import { UserId } from "@/backend/user";
-import { db } from "@/lib/db/db";
-import { Result, Success } from "@/lib/result/result";
+import { db } from "@/lib/db";
+import { Result, Success } from "@/lib/result";
 
 type RequestType = {
   userId: string;

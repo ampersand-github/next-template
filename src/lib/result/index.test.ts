@@ -1,4 +1,4 @@
-import { Failure, Result, Success } from "@/lib/result/result";
+import { Failure, Result, Success } from "./index";
 
 describe("Result型", () => {
   const doSomething = (x: boolean): Result<string, Error> => {

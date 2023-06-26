@@ -1,7 +1,7 @@
 import { Address, IAddress } from "@/backend/address/domain";
 import { AddressRepository } from "@/backend/address/repository";
 import { UserId } from "@/backend/user";
-import { Result, Success } from "@/lib/result/result";
+import { Result, Success } from "@/lib/result";
 import { PrismaClient } from "@prisma/client";
 
 type RequestType = {

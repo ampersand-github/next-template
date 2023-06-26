@@ -1,4 +1,4 @@
-import { db } from "@/lib/db/db";
+import { db } from "@/lib/db";
 
 describe("jest-prisma-check", () => {
   test("userテーブルが存在するとき、trueを返すべき", async () => {
