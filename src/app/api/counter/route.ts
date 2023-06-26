@@ -47,7 +47,7 @@ class CounterUpsertUseCase {
   async execute({ userId, count }: RequestType): Promise<ResponseType> {
     try {
       const prismaResult = await db.$transaction(async (prisma) => {
-        return await prisma.counter.upsert({
+        return await prisma.counters.upsert({
           where: { user_id: userId },
           create: { user_id: userId, count: count },
           update: { count: count },
