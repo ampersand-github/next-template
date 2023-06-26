@@ -1,6 +1,11 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// 命名規則は以下を参照してください
+// https://qiita.com/genzouw/items/35022fa96c120e67c637
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -55,8 +60,8 @@ model User {
   accounts               Account[]
   sessions               Session[]
   Post                   Post[]
-  counter                Counter?
-  address                Address? // 1:1relation Userにとってaddressはオプショナル
+  counter                counters?
+  address                address? // 1:1relation Userにとってaddressはオプショナル
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
   stripePriceId          String?   @map(name: "stripe_price_id")
@@ -88,14 +93,14 @@ model Post {
   @@map(name: "posts")
 }
 
-model Counter {
+model counters {
   user_id String @id
   count   Int    @default(0)
   //
   userId  User   @relation(fields: [user_id], references: [id])
 }
 
-model Address {
+model address {
   user_id    String   @unique
   post_code  String
   prefecture String
