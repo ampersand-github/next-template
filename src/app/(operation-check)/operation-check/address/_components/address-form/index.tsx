@@ -1,6 +1,5 @@
 "use client";
 
-import { IFindOneAddressResponse } from "@/backend/address/use-case/find-one-address/response-interface";
 import { Button } from "@/__shared__/ui/shadcn/button";
 import {
   Form,
@@ -13,6 +12,7 @@ import {
 } from "@/__shared__/ui/shadcn/form";
 import { Input } from "@/__shared__/ui/shadcn/input";
 import { useToast } from "@/__shared__/ui/shadcn/use-toast";
+import { IFindOneAddressResponse } from "@/backend/address/use-case/find-one-address/response-interface";
 import { env } from "@/env.mjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { atom, useAtom } from "jotai";

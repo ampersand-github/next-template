@@ -1,8 +1,8 @@
+import { Button } from "@/__shared__/ui/shadcn/button";
 import {
   PartsA1,
   PartsA2,
 } from "@/app/(operation-check)/operation-check/import-access/_components";
-import { Button } from "@/__shared__/ui/shadcn/button";
 
 export default async function Page() {
   return (

@@ -2,8 +2,8 @@
 
 import { Button } from "@/__shared__/ui/shadcn/button";
 import { toast } from "@/__shared__/ui/shadcn/use-toast";
-import { env } from "@/env.mjs";
 import { url } from "@/__shared__/utils/url";
+import { env } from "@/env.mjs";
 import { redirect, useRouter } from "next/navigation";
 
 type Props = {
