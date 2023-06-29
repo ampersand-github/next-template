@@ -1,5 +1,5 @@
-import { Failure, Result, Success } from "@/lib/result";
-import { upload } from "@/lib/storage/upload";
+import { Failure, Result, Success } from "../../../../../../../../__shared__/utils/result";
+import { upload } from "@/__shared__/utils/storage/upload";
 import imageCompression from "browser-image-compression";
 
 export const uploadImage = async (

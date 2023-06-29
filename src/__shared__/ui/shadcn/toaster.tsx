@@ -7,8 +7,8 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "@/components/ui/toast";
-import { useToast } from "@/components/ui/use-toast";
+} from "@/__shared__/ui/shadcn/toast";
+import { useToast } from "@/__shared__/ui/shadcn/use-toast";
 
 /**
  * @public

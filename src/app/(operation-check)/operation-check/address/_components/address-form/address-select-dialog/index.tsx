@@ -5,9 +5,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+} from "@/__shared__/ui/shadcn/dialog";
+import { Label } from "@/__shared__/ui/shadcn/label";
+import { RadioGroup, RadioGroupItem } from "@/__shared__/ui/shadcn/radio-group";
 import { useAtom } from "jotai";
 import { isAddressSelectDialogOpenAtom, selectedAddressAtom } from "../";
 import { IAddress } from "../address-interface";

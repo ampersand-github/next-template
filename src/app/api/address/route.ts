@@ -2,8 +2,8 @@ import { createErrResponse, createSimpleResponse } from "@/app/api/_utils";
 import { FindOneAddress } from "@/backend/address/use-case/find-one-address";
 import { SaveAddress } from "@/backend/address/use-case/save-address";
 import { ISaveAddressRequest } from "@/backend/address/use-case/save-address/request-interface";
-import { getCurrentUser } from "@/lib/auth/get-current-user";
-import { db } from "@/lib/db";
+import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
+import { db } from "../../../__shared__/utils/db";
 
 export async function GET() {
   try {

@@ -1,3 +1,4 @@
+import { TransactionClient } from "@/__shared__/utils/db";
 import { convertToAddressDomain } from "@/backend/address";
 import { PrismaClient } from "@prisma/client";
 import { UserId } from "../../user";
@@ -18,7 +19,10 @@ export class AddressRepository {
     return result ? convertToAddressDomain(result) : undefined;
   }
 
-  public async save(p: PrismaClient, address: Address): Promise<Address> {
+  public async save(
+    p: PrismaClient | TransactionClient,
+    address: Address
+  ): Promise<Address> {
     const property = {
       user_id: address.id.toString(),
       post_code: address.postalCode,

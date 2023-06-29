@@ -1,6 +1,6 @@
 import Loading from "@/app/(operation-check)/operation-check/counter/loading";
-import { getCurrentUser } from "@/lib/auth/get-current-user";
-import { db } from "@/lib/db";
+import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
+import { db } from "../../../../__shared__/utils/db";
 import { counters as PrismaCounter } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";

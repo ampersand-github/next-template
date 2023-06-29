@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@/__shared__/ui/shadcn/button";
+import { useToast } from "@/__shared__/ui/shadcn/use-toast";
 import { atom, useAtomValue } from "jotai";
 import Image from "next/image";
 import { useState } from "react";

@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import { Failure, Result, Success } from "@/lib/result";
+import { Failure, Result, Success } from "../../../../../../../../__shared__/utils/result";
 import { z } from "zod";
 
 const schema = z.object({

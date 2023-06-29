@@ -1,4 +1,4 @@
-import { authOptions } from "@/lib/auth/auth-options";
+import { authOptions } from "@/__shared__/utils/auth/auth-options";
 import { getServerSession } from "next-auth";
 
 /**

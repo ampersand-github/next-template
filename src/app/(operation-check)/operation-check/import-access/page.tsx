@@ -2,7 +2,7 @@ import {
   PartsA1,
   PartsA2,
 } from "@/app/(operation-check)/operation-check/import-access/_components";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/__shared__/ui/shadcn/button";
 
 export default async function Page() {
   return (

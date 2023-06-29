@@ -1,6 +1,6 @@
-import { getCurrentUser } from "@/lib/auth/get-current-user";
-import { db } from "@/lib/db";
-import { Failure, Result, Success } from "@/lib/result";
+import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
+import { db } from "../../../__shared__/utils/db";
+import { Failure, Result, Success } from "../../../__shared__/utils/result";
 import { z } from "zod";
 
 const patchSchema = z.object({ count: z.number() });

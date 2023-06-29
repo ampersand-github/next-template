@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/__shared__/ui/shadcn/button";
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { convertDataUrlToFile } from "@/lib/storage/convert-data-url-to-file";
+} from "@/__shared__/ui/shadcn/dialog";
+import { convertDataUrlToFile } from "@/__shared__/utils/storage/convert-data-url-to-file";
 import "cropperjs/dist/cropper.css"; // 必須 ないとレイアウトが崩れる
 import { useSetAtom } from "jotai";
 import React, { createRef } from "react";
