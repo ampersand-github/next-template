@@ -21,8 +21,8 @@
 
 - フロントエンドのコードを記述すること
 - ドメイン周りのルールや DB 周りはバックエンド側で処理するので書かない
-- pages.tsx には全体を見渡せるようにコードを書く
-- \_components には pages.tsx からコンポーネントを分割したものを記述する
+- page.tsx には全体を見渡せるようにコードを書く
+- \_components には page.tsx からコンポーネントを分割したものを記述する
 - \_components は/〇〇/index.tsx のような形で書く
 - \_components は storybook 必須
 - \_storybook を作る上でロジックが邪魔なら、`index.presenter.tsx`, `index.container.tsx`のように分割する
