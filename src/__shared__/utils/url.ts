@@ -2,6 +2,7 @@
  * @public
  */
 export const url = {
+  TOP: "/",
   STRING_NUMERIC_INPUT: "operation-check/string-numeric-input",
   ADDRESS: "operation-check/address",
   IMPORT_ACCESS: "operation-check/import-access",
