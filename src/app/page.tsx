@@ -1,4 +1,4 @@
-import { Button } from "@/__shared__/ui/shadcn/button";
+import { Button } from "@/__shared__/components/ui/button";
 import { url } from "@/__shared__/utils/url";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/__shared__/ui/shadcn/button";
+import { Button } from "@/__shared__/components/ui/button";
 import {
   Form,
   FormControl,
@@ -9,9 +9,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/__shared__/ui/shadcn/form";
-import { Input } from "@/__shared__/ui/shadcn/input";
-import { useToast } from "@/__shared__/ui/shadcn/use-toast";
+} from "@/__shared__/components/ui/form";
+import { Input } from "@/__shared__/components/ui/input";
+import { useToast } from "@/__shared__/components/ui/use-toast";
 import { IFindOneAddressResponse } from "@/backend/address/use-case/find-one-address/response-interface";
 import { env } from "@/env.mjs";
 import { zodResolver } from "@hookform/resolvers/zod";

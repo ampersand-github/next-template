@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/__shared__/ui/shadcn/button";
+import { Button } from "@/__shared__/components/ui/button";
 import {
   Form,
   FormControl,
@@ -9,8 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/__shared__/ui/shadcn/form";
-import { Input } from "@/__shared__/ui/shadcn/input";
+} from "@/__shared__/components/ui/form";
+import { Input } from "@/__shared__/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";

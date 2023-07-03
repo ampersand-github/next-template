@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/__shared__/ui/shadcn/button";
-import { toast } from "@/__shared__/ui/shadcn/use-toast";
+import { Button } from "@/__shared__/components/ui/button";
+import { toast } from "@/__shared__/components/ui/use-toast";
 import { url } from "@/__shared__/utils/url";
 import { env } from "@/env.mjs";
 import { redirect, useRouter } from "next/navigation";
