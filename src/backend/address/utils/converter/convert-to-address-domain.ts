@@ -1,6 +1,6 @@
 import { Address, IAddress } from "@/backend/address/domain";
 import { UserId } from "@/backend/user";
-import { Address as PrismaAddress } from "@prisma/client";
+import { address as PrismaAddress } from "@prisma/client";
 
 export const convertToAddressDomain = (address: PrismaAddress): Address => {
   const props: IAddress = {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useToast } from "@/components/ui/use-toast";
-import { Result } from "@/lib/result/result";
+import { useToast } from "@/__shared__/components/ui/use-toast";
+import { Result } from "../../../../../../../__shared__/utils/result";
 import { fetchDownloadUrl } from "./fetch-download-url";
 import { DownloadImagePresenter } from "./index.presenter";
 

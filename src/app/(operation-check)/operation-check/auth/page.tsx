@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/auth/get-current-user";
+import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
 import { GitHubButton, LogoutButton } from "./_components";
 
 export default async function Page() {

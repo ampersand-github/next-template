@@ -8,7 +8,7 @@ export interface IAddress {
   prefecture: string;
   city: string;
   town: string;
-  block: string;
+  block?: string;
 }
 
 /*
@@ -21,7 +21,7 @@ export class Address extends AggregateRoot<IAddress, UserId> {
   private readonly _prefecture: Prefecture;
   private readonly _city: string;
   private readonly _town: string;
-  private readonly _block: string;
+  private readonly _block: string | undefined;
 
   public get postalCode(): string {
     return this._postalCode.value;
@@ -39,7 +39,7 @@ export class Address extends AggregateRoot<IAddress, UserId> {
     return this._town;
   }
 
-  public get block(): string {
+  public get block(): string | undefined {
     return this._block;
   }
 
