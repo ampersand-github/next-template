@@ -1,7 +1,5 @@
-import { Toaster } from "@/__shared__/components/ui/toaster";
-import { url } from "@/__shared__/utils/url";
+import { Toaster } from "@/components/ui/toaster";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import React from "react";
 import "./globals.css";
 
@@ -21,12 +19,11 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <div className="relative flex min-h-screen flex-col">
-          <div className={"flex h-16 items-center bg-gray-100"}>
-            <Link href={url.TOP}>
-              <h1 className={"pl-8 font-extrabold"}>Next-Template</h1>
-            </Link>
-          </div>
-          <main className="flex-1 space-y-8 p-24">{children}</main>
+          <header className={"flex h-16 items-center bg-gray-50"}>
+            header
+          </header>
+          <main className="flex-1 space-y-8 bg-[#e6f2ff] p-24">{children}</main>
+          <footer className={"flex h-16 items-center"}>footer</footer>
         </div>
 
         <Toaster />
