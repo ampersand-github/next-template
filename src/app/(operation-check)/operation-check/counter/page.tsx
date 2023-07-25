@@ -1,9 +1,9 @@
 import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
+import { db } from "@/__shared__/utils/db";
 import Loading from "@/app/(operation-check)/operation-check/counter/loading";
 import { counters as PrismaCounter } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import { db } from "../../../../__shared__/utils/db";
 import { PlusOneButton } from "./_components";
 
 export default async function Page() {

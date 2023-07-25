@@ -1,10 +1,6 @@
+import { Failure, Result, Success } from "@/__shared__/utils/result";
 import { upload } from "@/__shared__/utils/storage/upload";
 import imageCompression from "browser-image-compression";
-import {
-  Failure,
-  Result,
-  Success,
-} from "../../../../../../../../__shared__/utils/result";
 
 export const uploadImage = async (
   image: File
