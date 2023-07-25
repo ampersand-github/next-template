@@ -1,7 +1,7 @@
 import { convertToAddressDomain } from "@/backend/address";
 import { Address } from "@/backend/address/domain";
 import { UserId } from "@/backend/user";
-import { Address as PrismaAddress } from "@prisma/client";
+import { address as PrismaAddress } from "@prisma/client";
 
 describe("convertToAddressDomain()", (): void => {
   test("引数を指定したとき、指定した引数の値のドメインオブジェクトが生成されるべき", () => {
