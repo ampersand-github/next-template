@@ -28,7 +28,7 @@ const preview: Preview = {
   loaders: [mswLoader],
   decorators: [
     (Story) => (
-      <div>
+      <div className={"bg-white"}>
         <Story />
         <Toaster />
       </div>

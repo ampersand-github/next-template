@@ -19,8 +19,11 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <div className="relative flex min-h-screen flex-col">
-          <div className={"flex h-16 items-center bg-gray-100"}>header</div>
-          <main className="flex-1 space-y-8 p-24">{children}</main>
+          <header className={"flex h-16 items-center bg-gray-50"}>
+            header
+          </header>
+          <main className="flex-1 space-y-8 bg-[#e6f2ff] p-24">{children}</main>
+          <footer className={"flex h-16 items-center"}>footer</footer>
         </div>
 
         <Toaster />
