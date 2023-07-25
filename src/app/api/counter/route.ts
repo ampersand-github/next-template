@@ -1,7 +1,7 @@
-import { getCurrentUser } from "@/lib/auth/get-current-user";
-import { db } from "@/lib/db/db";
-import { Failure, Result, Success } from "@/lib/result/result";
+import { getCurrentUser } from "@/__shared__/utils/auth/get-current-user";
 import { z } from "zod";
+import { db } from "../../../__shared__/utils/db";
+import { Failure, Result, Success } from "../../../__shared__/utils/result";
 
 const patchSchema = z.object({ count: z.number() });
 
@@ -47,7 +47,7 @@ class CounterUpsertUseCase {
   async execute({ userId, count }: RequestType): Promise<ResponseType> {
     try {
       const prismaResult = await db.$transaction(async (prisma) => {
-        return await prisma.counter.upsert({
+        return await prisma.counters.upsert({
           where: { user_id: userId },
           create: { user_id: userId, count: count },
           update: { count: count },

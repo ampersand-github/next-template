@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/__shared__/components/ui/button";
 import {
   Form,
   FormControl,
@@ -9,9 +9,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
+} from "@/__shared__/components/ui/form";
+import { Input } from "@/__shared__/components/ui/input";
+import { useToast } from "@/__shared__/components/ui/use-toast";
+import { IFindOneAddressResponse } from "@/backend/address/use-case/find-one-address/response-interface";
+import { env } from "@/env.mjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { atom, useAtom } from "jotai";
 import { Loader2 } from "lucide-react";
@@ -32,6 +34,7 @@ export const candidateAddressAtom = atom<[IAddress, ...IAddress[]]>([
 export const isAddressSelectDialogOpenAtom = atom(false);
 
 export const AddressForm = () => {
+  const url = `${env.NEXT_PUBLIC_ORIGIN}/api/address`;
   const [_, setIsOpen] = useAtom(isAddressSelectDialogOpenAtom);
   const [candidate, setCandidate] = useAtom(candidateAddressAtom);
   const [selectedAddress] = useAtom(selectedAddressAtom);
@@ -67,11 +70,40 @@ export const AddressForm = () => {
     setIsLoading(false);
   };
 
-  const onSubmit = (values: z.infer<typeof addressFormSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    toast({ description: "送信しました", variant: "success" });
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(url, { method: "GET" });
+      if (!response.ok) {
+        const json = await response.json();
+        toast({ description: json.message, variant: "error" });
+        throw new Error(json.message);
+      }
+      const json: IFindOneAddressResponse = await response.json();
+      form.setValue("postalCode", json.postalCode);
+      form.setValue("prefecture", json.prefecture);
+      form.setValue("city", json.city);
+      form.setValue("town", json.town);
+      form.setValue("block", json.block);
+    })();
+  }, [form, toast, url]);
+
+  const onSubmit = async (values: z.infer<typeof addressFormSchema>) => {
+    const props = {
+      postalCode: values.postalCode,
+      prefecture: values.prefecture,
+      city: values.city,
+      town: values.town,
+      block: values.block,
+    };
+    const body = JSON.stringify(props);
+    const response = await fetch(url, { method: "POST", body: body });
+    if (!response.ok) {
+      const json = await response.json();
+      toast({ description: json.message, variant: "error" });
+      throw new Error(json.message);
+    }
+    const json = await response.json();
+    toast({ description: json.message, variant: "success" });
   };
 
   return (

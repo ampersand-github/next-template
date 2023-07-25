@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
+import { Button } from "@/__shared__/components/ui/button";
+import { toast } from "@/__shared__/components/ui/use-toast";
+import { url } from "@/__shared__/utils/url";
 import { env } from "@/env.mjs";
-import { url } from "@/lib/url";
 import { redirect, useRouter } from "next/navigation";
 
 type Props = {

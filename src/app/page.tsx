@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { url } from "@/lib/url";
+import { Button } from "@/__shared__/components/ui/button";
+import { url } from "@/__shared__/utils/url";
 import Link from "next/link";
 
 export default function Home() {
