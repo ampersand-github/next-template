@@ -1,4 +1,5 @@
 import { Toaster } from "@/__shared__/components/ui/toaster";
+import { FooterPresenter, HeaderPresenter } from "@/app/_components";
 import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
@@ -19,13 +20,12 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <div className="relative flex min-h-screen flex-col">
-          <header className={"flex h-16 items-center bg-gray-50"}>
-            header
-          </header>
-          <main className="flex-1 space-y-8 bg-[#e6f2ff] p-24">{children}</main>
-          <footer className={"flex h-16 items-center"}>footer</footer>
+          <HeaderPresenter />
+          <main className="flex-1 space-y-8 bg-[#e6f2ff] p-4 md:p-24">
+            {children}
+          </main>
+          <FooterPresenter />
         </div>
-
         <Toaster />
       </body>
     </html>
