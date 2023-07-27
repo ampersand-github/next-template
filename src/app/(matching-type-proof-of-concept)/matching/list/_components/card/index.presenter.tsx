@@ -4,6 +4,7 @@ import {
   CardContent,
   CardDescription,
 } from "@/__shared__/components/ui/card";
+import { randomNumber } from "@/__shared__/utils/functions/random-number";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,12 @@ export type Props = {
   awards: string[];
 };
 
+const colors: [string, ...string[]] = [
+  "bg-blue-500",
+  "bg-green-500",
+  "bg-yellow-500",
+  "bg-red-500",
+];
 export const CardPresenter = ({
   imageSrc,
   companyName,
@@ -59,7 +66,10 @@ export const CardPresenter = ({
         <div className={"flex flex-row items-center"}>
           <div className={" line-clamp-3"}>
             {awards.map((award) => (
-              <Badge key={award} className={"my-1 mr-1"}>
+              <Badge
+                key={award}
+                className={`my-1 mr-1 ${colors[randomNumber(colors)]}`}
+              >
                 {award}
               </Badge>
             ))}
