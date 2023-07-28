@@ -1,11 +1,11 @@
+import rehypePrism from "@mapbox/rehype-prism";
 import nextMDX from "@next/mdx";
+import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
+import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypePrism from "@mapbox/rehype-prism";
-import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
-import remarkBreaks from "remark-breaks";
 
 const withMDX = nextMDX({
   extensions: /\.mdx?$/,
@@ -27,7 +27,7 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: [ "tsx",  "mdx"],
+  pageExtensions: ["tsx", "mdx"],
   reactStrictMode: true,
   output: "standalone",
   images: {
@@ -49,6 +49,5 @@ const nextConfig = {
     ];
   },
 };
-
 
 export default withMDX(nextConfig);
