@@ -19,8 +19,6 @@ type Props = {
   description: string; // 会社名を入力してください
 };
 
-const delimiters = [188, 13]; // comma and enter key codes
-
 export const TagInputFormFieldPresenter = ({
   name,
   control,
