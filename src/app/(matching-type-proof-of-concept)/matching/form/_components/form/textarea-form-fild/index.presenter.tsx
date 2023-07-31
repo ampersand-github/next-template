@@ -1,3 +1,5 @@
+import { OptionalLabel } from "@/__shared__/components/original/optional-label";
+import { RequiredLabel } from "@/__shared__/components/original/required-label";
 import {
   FormControl,
   FormDescription,
@@ -11,6 +13,7 @@ import { FormValues } from "@/app/(matching-type-proof-of-concept)/matching/form
 import { Control } from "react-hook-form";
 
 type Props = {
+  isRequired: boolean;
   control: Control<FormValues>;
   name: keyof FormValues; // companyName
   label: string; // 会社名
@@ -18,6 +21,7 @@ type Props = {
   description: string; // 会社名を入力してください
 };
 export const TextAreaFormFiledPresenter = ({
+  isRequired,
   control,
   name,
   label,
@@ -30,7 +34,10 @@ export const TextAreaFormFiledPresenter = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className={"flex flex-row items-center space-x-2"}>
+            <p>{label}</p>
+            {isRequired ? <RequiredLabel /> : <OptionalLabel />}
+          </FormLabel>
           <FormControl>
             <Textarea
               placeholder={placeholder}

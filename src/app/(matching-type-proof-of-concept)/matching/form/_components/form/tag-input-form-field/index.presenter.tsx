@@ -1,3 +1,5 @@
+import { OptionalLabel } from "@/__shared__/components/original/optional-label";
+import { RequiredLabel } from "@/__shared__/components/original/required-label";
 import {
   FormControl,
   FormDescription,
@@ -12,6 +14,7 @@ import { TagsInput } from "react-tag-input-component";
 import { FormValues } from "../index";
 
 type Props = {
+  isRequired: boolean;
   control: Control<FormValues>;
   name: keyof FormValues; // companyName
   label: string; // 会社名
@@ -20,6 +23,7 @@ type Props = {
 };
 
 export const TagInputFormFieldPresenter = ({
+  isRequired,
   name,
   control,
   label,
@@ -35,7 +39,10 @@ export const TagInputFormFieldPresenter = ({
       render={({ field }) => {
         return (
           <FormItem>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className={"flex flex-row items-center space-x-2"}>
+              <p>{label}</p>
+              {isRequired ? <RequiredLabel /> : <OptionalLabel />}
+            </FormLabel>
             <FormControl>
               <TagsInput
                 value={selected || [""]}
@@ -45,6 +52,7 @@ export const TagInputFormFieldPresenter = ({
                 }}
                 name={name}
                 placeHolder={placeholder}
+                separators={[",", "、"]}
               />
             </FormControl>
             <FormDescription className={"whitespace-pre-wrap"}>
