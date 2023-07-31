@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}", "./.storybook/preview.tsx"],
+  content: ["./src/**/*.{ts,tsx,mdx}", "./.storybook/preview.tsx"],
   theme: {
     container: {
       center: true,
@@ -67,5 +67,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
