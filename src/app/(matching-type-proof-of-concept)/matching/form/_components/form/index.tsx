@@ -55,56 +55,59 @@ export const prefectures = [
   { id: 47, prefecture: "沖縄県" },
 ] as const;
 
+const requiredErr = { required_error: "必須項目です" };
 export const schema = z.object({
-  thumbnail: z.string().url({
-    message: "Thumbnail must be a valid URL.",
+  thumbnail: z.string(requiredErr).url({ message: "写真を設定してください" }),
+  companyName: z.string(requiredErr).min(1, {
+    message: "会社名の入力は必須です",
   }),
-  companyName: z.string().min(1, {
-    message: "Company name must be at least 1 characters.",
+  presidentName: z.string(requiredErr).min(1, {
+    message: "代表名の入力は必須です",
   }),
-  presidentName: z.string().min(1, {
-    message: "President name must be at least 1 characters.",
+  companyAddress: z.string(requiredErr).min(1, {
+    message: "会社住所の入力は必須です",
   }),
-  companyAddress: z.string().min(1, {
-    message: "Company address must be at least 1 characters.",
+  bizHours: z.string(requiredErr).min(1, {
+    message: "営業時間の入力は必須です",
   }),
-  bizHours: z.string().min(1, {
-    message: "bizHours hours must be at least 1 characters.",
-  }),
-  fees: z.string().min(1, {
-    message: "Fees must be at least 1 characters.",
+  fees: z.string(requiredErr).min(1, {
+    message: "料金の入力は必須です",
   }),
   activityPrefecture: z
-    .array(z.string())
+    .array(z.string(), requiredErr)
     .refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
+      message: "一つ以上の都道府県を選択してください",
     }),
   activityArea: z.string().min(1, {
-    message: "Activity area must be at least 1 characters.",
+    message: "活動エリアの入力は必須です",
   }),
   contactEmail: z
     .string()
     .email({
-      message: "Company email must be a valid email.",
+      message: "メールアドレスの形式が誤っています",
     })
     .optional(),
-  contactTel: z.string().optional(),
-  companyDescription: z.string().min(1, {
-    message: "Company description must be at least 1 characters.",
-  }),
-  companyURL: z.string().url({
-    message: "Company URL must be a valid URL.",
-  }),
+  contactTel: z
+    .string()
+    .regex(/^[+-]?\d*\.?\d+$/, { message: "電話番号の形式が誤っています" })
+    .transform(Number)
+    .optional(),
+  companyURL: z
+    .string(requiredErr)
+    .url({
+      message: "URLの形式が誤っています",
+    })
+    .optional(),
   qualification: z
     .array(z.string())
-    .refine((value) => value.some((item) => item), {
-      message: "You have to select at least one item.",
-    }),
-  equipment: z.string().min(1, {
-    message: "Equipment must be at least 1 characters.",
-  }),
-  messageToUsers: z.string().min(1, {
-    message: "Message to users must be at least 1 characters.",
+    .refine((value) => value.some((item) => item))
+    .optional(),
+  equipment: z
+    .array(z.string())
+    .refine((value) => value.some((item) => item))
+    .optional(),
+  messageToUsers: z.string(requiredErr).min(1, {
+    message: "ユーザーへのメッセージの入力は必須です",
   }),
 });
 

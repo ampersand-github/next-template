@@ -1,20 +1,11 @@
 import { Button } from "@/__shared__/components/ui/button";
-import { Checkbox } from "@/__shared__/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/__shared__/components/ui/form";
-import { Input } from "@/__shared__/components/ui/input";
-import { CheckedState } from "@radix-ui/react-checkbox";
+import { Form } from "@/__shared__/components/ui/form";
 import { UseFormReturn } from "react-hook-form";
 import * as z from "zod";
-import { FormValues, prefectures, schema } from "./index";
+import { ImageInputFormField } from "./image-input-form-field";
+import { FormValues, schema } from "./index";
 import { InputFormFieldPresenter } from "./input-form-fild";
+import { PrefectureCheckboxFieldPresenter } from "./prefecture-checkbox-field";
 import { TagInputFormFieldPresenter } from "./tag-input-form-field";
 import { TextAreaFormFiledPresenter } from "./textarea-form-fild";
 
@@ -27,44 +18,43 @@ export const MatchingFormPresenter = ({ form, onSubmit }: Props) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
+        <ImageInputFormField
+          isRequired={true}
           control={form.control}
           name="thumbnail"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>写真</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                会社の顔になる写真をアップロードしてください
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+          label="写真"
+          description="会社の顔になる写真をアップロードしてください"
         />
+
         <InputFormFieldPresenter
+          isRequired={true}
           control={form.control}
           name={"companyName"}
           label={"会社名"}
           placeholder={"株式会社介護タクシー"}
           description={"会社名を入力してください"}
         />
+
         <InputFormFieldPresenter
+          isRequired={true}
           control={form.control}
           name={"presidentName"}
           label={"代表者名"}
           placeholder={"田中 大吾"}
           description={"代表者名を入力してください"}
         />
+
         <InputFormFieldPresenter
+          isRequired={true}
           control={form.control}
           name={"companyAddress"}
           label={"会社住所"}
           placeholder={"東京都千代田区1-1-1"}
           description={"会社の住所を入力してください"}
         />
+
         <TextAreaFormFiledPresenter
+          isRequired={true}
           control={form.control}
           name={"bizHours"}
           label={"営業時間"}
@@ -73,117 +63,85 @@ export const MatchingFormPresenter = ({ form, onSubmit }: Props) => {
         />
 
         <InputFormFieldPresenter
+          isRequired={false}
+          control={form.control}
+          name={"companyURL"}
+          label={"会社URL"}
+          placeholder={"東京都千代田区1-1-1"}
+          description={"会社URLを入力してください"}
+        ></InputFormFieldPresenter>
+        <InputFormFieldPresenter
+          isRequired={false}
           control={form.control}
           name={"contactEmail"}
-          label={"メールアドレス(あれば)"}
+          label={"メールアドレス"}
           placeholder={"sample@gmail.com"}
-          description={"メールアドレスを入力してください"}
+          description={"お問い合わせ用のメールアドレスを入力してください"}
         />
+
         <InputFormFieldPresenter
+          isRequired={false}
           control={form.control}
           name={"contactTel"}
-          label={"電話番号(あれば)"}
-          placeholder={"090-1234-5678"}
-          description={"電話番号を入力してください"}
+          label={"電話番号"}
+          placeholder={"09012345678"}
+          description={
+            "お問い合わせ用の電話番号を入力してください\n※ハイフンなしで入力してください\n※数字で入力してください"
+          }
         />
 
         <TextAreaFormFiledPresenter
+          isRequired={true}
           control={form.control}
           name={"fees"}
           label={"料金"}
-          placeholder={`あとでてきとうに料金を書く`} // todo あとでてきとうに料金を書く
-          description={"営業時間を入力してください"}
+          placeholder={`■ 運賃\n乗運賃（3kmまで) 800円\n5Kmまで 1500円\n10Kmまで 3000円\n■ レンタル\nストレッチャー 1000円\n車イス 500円\n `}
+          description={"料金を入力してください"}
         />
 
-        <FormField
+        <PrefectureCheckboxFieldPresenter
+          isRequired={true}
           control={form.control}
-          name="activityPrefecture"
-          render={() => (
-            <FormItem>
-              <FormLabel>活動している都道府県</FormLabel>
-              <div
-                className={
-                  "flex flex-row flex-wrap justify-start rounded-md bg-white"
-                }
-              >
-                {prefectures.map((item) => (
-                  <FormField
-                    key={item.id}
-                    control={form.control}
-                    name="activityPrefecture"
-                    render={({ field }) => {
-                      const handleChange = (checked: CheckedState): void =>
-                        checked
-                          ? field.onChange([
-                              ...(field.value || []),
-                              item.prefecture,
-                            ])
-                          : field.onChange(
-                              field.value?.filter(
-                                (value: string): boolean =>
-                                  value !== item.prefecture
-                              )
-                            );
-                      return (
-                        <FormItem key={item.id} className={"p-2 "}>
-                          <div className={"flex items-center space-x-1 "}>
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.prefecture)}
-                                onCheckedChange={handleChange}
-                              />
-                            </FormControl>
-                            <FormLabel>{item.prefecture}</FormLabel>
-                          </div>
-                        </FormItem>
-                      );
-                    }}
-                  />
-                ))}
-              </div>
-              <FormDescription className={"whitespace-pre-wrap"}>
-                活動している都道府県を選択してください
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+          name={"activityPrefecture"}
+          label={"活動している都道府県"}
+          description={`活動地域を選択してください`}
         />
+
         <TextAreaFormFiledPresenter
+          isRequired={true}
           control={form.control}
           name={"activityArea"}
           label={"活動地域"}
           placeholder={`東京23区と埼玉県を中心に活動しています`}
-          description={`活動地域を書いてください`}
+          description={`活動地域の補足をしてください`}
         />
 
         <TagInputFormFieldPresenter
+          isRequired={false}
           control={form.control}
           name={"qualification"}
           label={"資格"}
-          placeholder={"介護福祉士、看護師、救急救命士、ドライバーなど"}
+          placeholder={
+            "普通自動車二種免許、介護職員初任者研修、レクリエーション介護士2級"
+          }
           description={`利用者から見て魅力的な資格を左から順に書いてください\n資格を「、」を区切りにして入力してください`}
         />
 
         <TagInputFormFieldPresenter
+          isRequired={false}
           control={form.control}
           name={"equipment"}
           label={"備品"}
-          placeholder={"ストレッチャー、車イス、松葉杖など"}
+          placeholder={"ストレッチャー、車イス、松葉杖"}
           description={`利用者から見て魅力的な備品を左から順に書いてください\n備品を「、」を区切りにして入力してください`}
         />
         <TextAreaFormFiledPresenter
-          control={form.control}
-          name={"companyDescription"}
-          label={"当社について"}
-          placeholder={`あとでてきとうにを書く`} // todo あとでてきとうに料金を書く
-          description={`会社の特徴を書いてください\n 例えば、活動地域、当社の強み、など`}
-        />
-        <TextAreaFormFiledPresenter
+          isRequired={false}
           control={form.control}
           name={"messageToUsers"}
           label={"利用者の方へのメッセージ"}
-          placeholder={`あとでてきとうに料金を書く`} // todo あとでてきとうに料金を書く
-          description={"営業時間を入力してください"}
+          placeholder={`気配りや思いやりを大事にして活動してまいます\nご利用者の皆様の生活を丁寧にサポートします`} // todo あとでてきとうに料金を書く
+          description={`会社の特徴を書いてください\n 例えば、活動地域、当社の強み、など`}
         />
 
         <Button type="submit" className={"w-full"}>
