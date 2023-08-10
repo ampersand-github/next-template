@@ -11,4 +11,5 @@ export const url = {
   IMAGE_DOWNLOAD: "operation-check/image/image-download",
   COUNTER: "operation-check/counter",
   MATCHING: "matching/list",
+  RESAS_BASE_URL: "https://opendata.resas-portal.go.jp/api/v1",
 };
