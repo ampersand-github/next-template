@@ -11,7 +11,7 @@
 
 ## コーディング規約
 
-##### 全般
+##### 全般[README.md](README.md)
 
 `eslint-plugin-import-access`を採用しています。  
 これはコロケーションを強制する EsLint のプラグインです。使い方は以下を御覧ください  
@@ -232,4 +232,5 @@ export async function POST(req: Request) {
 
 ## メモ
 
+- routeingGroup 内の jest は package.json からなら動くが、ファイル単位だと動かない
 - なぜユースケースに prisma を外部から渡すか
