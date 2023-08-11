@@ -7,8 +7,8 @@ module.exports = {
       moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
       testEnvironment: "node",
       testMatch: [
-        "<rootDir>/src/app/**/*.test.ts",
-        "<rootDir>/src/__shared__/**/*.test.ts",
+        "<rootDir>/src/app/**/*.test.{ts,tsx}",
+        "<rootDir>/src/__shared__/**/*.test.{ts,tsx}",
       ],
     },
     {

@@ -16,6 +16,8 @@ const config: StorybookConfig = {
         postCss: true,
       },
     },
+    "@storybook/addon-mdx-gfm",
+    "@storybook/addon-interactions",
   ],
   framework: {
     name: "@storybook/nextjs",
