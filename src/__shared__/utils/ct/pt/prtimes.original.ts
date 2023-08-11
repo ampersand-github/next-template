@@ -1,5 +1,5 @@
 export function arrayDiffOriginal(olds: any[], news: any[]) {
-  const startTime = performance.now(); // 開始時間
+  // const startTime = performance.now(); // 開始時間
 
   let deleted = [];
   let created = [];
@@ -28,8 +28,8 @@ export function arrayDiffOriginal(olds: any[], news: any[]) {
     }
   }
 
-  const endTime = performance.now(); // 終了時間
-  console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
+  // const endTime = performance.now(); // 終了時間
+  // console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
 
   return {
     deleted: Array.from(new Set(deleted)), // deletedから修正

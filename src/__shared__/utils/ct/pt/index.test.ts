@@ -1,7 +1,7 @@
-import { AtLeast1 } from "@/__shared__/utils/cording-test/prtimes/interface";
-import { arrayDiffChatGPT } from "@/__shared__/utils/cording-test/prtimes/prtimes.chatgpt";
-import { arrayDiffMadeByMe } from "@/__shared__/utils/cording-test/prtimes/prtimes.madebyme";
-import { arrayDiffOriginal } from "@/__shared__/utils/cording-test/prtimes/prtimes.original";
+import { AtLeast1 } from "@/__shared__/utils/ct/pt/interface";
+import { arrayDiffChatGPT } from "@/__shared__/utils/ct/pt/prtimes.chatgpt";
+import { arrayDiffMadeByMe } from "@/__shared__/utils/ct/pt/prtimes.madebyme";
+import { arrayDiffOriginal } from "@/__shared__/utils/ct/pt/prtimes.original";
 
 describe("PR-TIMESコーディングテスト", () => {
   const olds: AtLeast1<string> = ["a", "b", "c", "a", "b", "c", "a", "b", "c"];

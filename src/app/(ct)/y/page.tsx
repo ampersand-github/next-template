@@ -1,5 +1,5 @@
 import { url } from "@/__shared__/utils/url";
-import Loading from "@/app/(cording-test)/yumemi/loading";
+import Loading from "@/app/(ct)/y/loading";
 import { env } from "@/env.mjs";
 import { Suspense } from "react";
 import {

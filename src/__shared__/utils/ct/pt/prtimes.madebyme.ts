@@ -1,4 +1,4 @@
-import { AtLeast1 } from "@/__shared__/utils/cording-test/prtimes/interface";
+import { AtLeast1 } from "@/__shared__/utils/ct/pt/interface";
 
 /*
  * 配列oldと配列newを比較する
@@ -13,7 +13,7 @@ export const arrayDiffMadeByMe = <T>(
   deleted: T[];
   created: T[];
 } => {
-  const startTime = performance.now(); // 開始時間
+  // const startTime = performance.now(); // 開始時間
 
   const setOlds: Set<T> = new Set(olds);
   const setNews: Set<T> = new Set(news);
@@ -21,8 +21,8 @@ export const arrayDiffMadeByMe = <T>(
   const deleted: T[] = Array.from(setOlds).filter((x: T) => !setNews.has(x));
   const created: T[] = Array.from(setNews).filter((x: T) => !setOlds.has(x));
 
-  const endTime = performance.now(); // 終了時間
-  console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
+  // const endTime = performance.now(); // 終了時間
+  // console.log(endTime - startTime); // 何ミリ秒かかったかを表示する
 
   return {
     deleted,
