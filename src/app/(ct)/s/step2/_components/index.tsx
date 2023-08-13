@@ -4,7 +4,7 @@ import { toast } from "@/__shared__/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Step1FormPresenter } from "./index.presenter";
+import { StepTwoFormPresenter } from "./index.presenter";
 
 export type Option = {
   readonly id: string;
@@ -50,16 +50,16 @@ const deliveries: [string] = Object.values(DELIVERY).map(
   (item: Option) => item.value
 ) as [string];
 
-export const stepOneSchema = z.object({
+export const stepTwoSchema = z.object({
   product: z.enum(products, { required_error: "商品を選択してください" }),
   delivery: z.enum(deliveries, {
     required_error: "配送オプションを選択してください",
   }),
 });
 
-export function StepOne() {
-  const form = useForm<z.infer<typeof stepOneSchema>>({
-    resolver: zodResolver(stepOneSchema),
+export function StepTwo() {
+  const form = useForm<z.infer<typeof stepTwoSchema>>({
+    resolver: zodResolver(stepTwoSchema),
     defaultValues: {},
   });
 
@@ -67,11 +67,11 @@ export function StepOne() {
     form.setValue("product", value);
 
     // 配送オプションをリセット
-    form.resetField("delivery");
-    form.setValue("delivery", "");
+    form.resetField("delivery"); // formの値をリセット
+    form.setValue("delivery", ""); // 画面上の表記をリセット
   };
 
-  const onSubmit = (data: z.infer<typeof stepOneSchema>) => {
+  const onSubmit = (data: z.infer<typeof stepTwoSchema>) => {
     toast({
       title: "送信した値",
       variant: "info",
@@ -84,13 +84,19 @@ export function StepOne() {
     });
   };
 
+  const onSelectDisabled = (value: string) => {
+    const product = form.getValues("product");
+    return product === PRODUCT.car.value && value === DELIVERY.ships.value;
+  };
+
   return (
-    <Step1FormPresenter
+    <StepTwoFormPresenter
       form={form}
       onSubmit={onSubmit}
       onValueChange={onProductChange}
       PRODUCT={PRODUCT}
       DELIVERY={DELIVERY}
+      onSelectDisabled={onSelectDisabled}
     />
   );
 }

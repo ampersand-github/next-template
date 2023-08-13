@@ -1,9 +1,10 @@
 import { Suspense } from "react";
-import { StepOne } from "./_components";
+import { StepTwo } from "./_components";
+
 export default async function Page() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <StepOne />
+      <StepTwo />
     </Suspense>
   );
 }
