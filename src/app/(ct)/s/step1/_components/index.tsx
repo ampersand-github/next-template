@@ -3,8 +3,8 @@
 import { toast } from "@/__shared__/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Step1FormPresenter } from "./index.presenter"
 import { z } from "zod";
+import { Step1FormPresenter } from "./index.presenter";
 
 export type Option = {
   readonly id: string;
