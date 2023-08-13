@@ -1,66 +1,96 @@
 "use client";
+
+import { toast } from "@/__shared__/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { Step1FormPresenter } from "./index.presenter"
 import { z } from "zod";
-import { Step1Presenter } from "./index.presenter";
 
-export const PRODUCT = [
-  { value: "PC", label: "PC" },
-  { value: "Flower", label: "Flower" },
-  { value: "Car", label: "Car" },
-] as const;
+export type Option = {
+  readonly id: string;
+  readonly value: string;
+  readonly label: string;
+};
 
-export const DELIVERY = [
-  { value: "Ships", label: "Ships" },
-  { value: "PickUp", label: "PickUp" },
-] as const;
+const PRODUCT: Record<string, Option> = {
+  pc: {
+    id: "pc",
+    label: "PC",
+    value: "pc",
+  },
+  flower: {
+    id: "flower",
+    label: "Flower",
+    value: "flower",
+  },
+  car: {
+    id: "car",
+    label: "Car",
+    value: "car",
+  },
+};
 
-export const Color = [
-  { id: "red", label: "Red" },
-  { id: "green", label: "Green" },
-] as const;
+const DELIVERY: Record<string, Option> = {
+  ships: {
+    id: "ships",
+    label: "Ships",
+    value: "ships",
+  },
+  pickUp: {
+    id: "pickUp",
+    label: "PickUp",
+    value: "pickUp",
+  },
+};
 
-const stepOneSchema = z.object({
-  product: z.string(),
-  delivery: z.string(),
-  color: z.string().optional(), // https://ui.shadcn.com/docs/components/radio-group
+const products: [string] = Object.values(PRODUCT).map(
+  (item: Option) => item.value
+) as [string];
+const deliveries: [string] = Object.values(DELIVERY).map(
+  (item: Option) => item.value
+) as [string];
+
+export const stepOneSchema = z.object({
+  product: z.enum(products, { required_error: "商品を選択してください" }),
+  delivery: z.enum(deliveries, {
+    required_error: "配送オプションを選択してください",
+  }),
 });
 
-export const Step1Container = () => {
-  const router = useRouter();
+export function StepOne() {
   const form = useForm<z.infer<typeof stepOneSchema>>({
     resolver: zodResolver(stepOneSchema),
-    defaultValues: {
-      product: "",
-      color: "",
-      delivery: "",
-    },
+    defaultValues: {},
   });
 
   const onProductChange = async (value: string) => {
-    console.log("product.change", value);
     form.setValue("product", value);
 
-    // formの値がリセットされる。
-    // deliveryのセレクトボックスの値もvalue={field.value}を指定しているので画面表記もリセットされる。
+    // 配送オプションをリセット
+    form.resetField("delivery");
     form.setValue("delivery", "");
-
-    // 要件には書いてないが？？？
-    if (value !== "Flower") form.setValue("color", "");
-
-    router.refresh();
   };
 
   const onSubmit = (data: z.infer<typeof stepOneSchema>) => {
-    console.log(data);
+    toast({
+      title: "送信した値",
+      variant: "info",
+      description: (
+        <div>
+          <p>product: {data.product}</p>
+          <p>delivery: {data.delivery}</p>
+        </div>
+      ),
+    });
   };
 
   return (
-    <Step1Presenter
+    <Step1FormPresenter
       form={form}
       onSubmit={onSubmit}
-      onProductChange={onProductChange}
+      onValueChange={onProductChange}
+      PRODUCT={PRODUCT}
+      DELIVERY={DELIVERY}
     />
   );
-};
+}
