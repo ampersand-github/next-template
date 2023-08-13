@@ -14,8 +14,8 @@ import {
   SelectValue,
 } from "@/__shared__/components/ui/select";
 import { UseFormReturn } from "react-hook-form";
-import { Option, stepOneSchema } from "../index";
 import { z } from "zod";
+import { Option, stepOneSchema } from "../index";
 
 type Props = {
   form: UseFormReturn<z.infer<typeof stepOneSchema>>;
