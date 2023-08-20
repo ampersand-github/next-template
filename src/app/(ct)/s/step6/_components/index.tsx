@@ -109,13 +109,16 @@ export function StepSix() {
     form.setValue("product", value);
 
     // プロダクトを変更したときに、そのプロダクトに応じた画像URLを用意する
+    // 力尽きたのでやらなかったが、本来だったら、画像URLはサーバーから取得する
     const flowerUrl =
-      "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80";
-const pcUrl = "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
+      "https://images.unsplash.com/photo-1558569828-446b90974b05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2148&q=80";
+    const pcUrl =
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80";
+    const carUrl =
+      "https://images.unsplash.com/photo-1546614042-7df3c24c9e5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
     if (value === PRODUCT.flower.value) setProductImage(flowerUrl);
     if (value === PRODUCT.pc.value) setProductImage(pcUrl);
-    // todo あとでスイッチ分にする。
-    // todo 別関数に切り出しす
+    if (value === PRODUCT.car.value) setProductImage(carUrl);
 
     // 個人のときは、プロダクトを変更したときに配送オプションをリセットする(法人のときはしない)
     if (form.getValues("userType") === USER_TYPE.personal.value) {
