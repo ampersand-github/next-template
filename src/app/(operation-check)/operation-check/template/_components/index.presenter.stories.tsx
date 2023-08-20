@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Presenter } from "./index.presenter";
 
 const meta: Meta<typeof Presenter> = {
-  title: "components/step1/Presenter",
+  title: "components/template/TemplatePresenter",
   component: Presenter,
 };
 

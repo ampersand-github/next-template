@@ -7,7 +7,9 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "storybook-addon-next",
+    "@storybook/addon-mdx-gfm",
+    "@storybook/addon-interactions",
+    // "storybook-addon-next",
     {
       name: "@storybook/addon-styling",
       options: {
@@ -16,8 +18,6 @@ const config: StorybookConfig = {
         postCss: true,
       },
     },
-    "@storybook/addon-mdx-gfm",
-    "@storybook/addon-interactions",
   ],
   framework: {
     name: "@storybook/nextjs",
