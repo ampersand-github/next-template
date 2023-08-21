@@ -3,7 +3,7 @@ import { PopulationLabel } from "../..";
 import { PopulationLabelRadioGroupPresenter } from "./index.presenter";
 
 const meta: Meta<typeof PopulationLabelRadioGroupPresenter> = {
-  title: "components/root/PopulationLabelRadioGroupPresenter",
+  title: "components/y/PopulationLabelRadioGroupPresenter",
   component: PopulationLabelRadioGroupPresenter,
 };
 

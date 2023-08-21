@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PrefecturesCheckboxPresenter } from "./index.presenter";
 
 const meta: Meta<typeof PrefecturesCheckboxPresenter> = {
-  title: "components/root/PrefecturesCheckboxPresenter",
+  title: "components/y/PrefecturesCheckboxPresenter",
   component: PrefecturesCheckboxPresenter,
 };
 

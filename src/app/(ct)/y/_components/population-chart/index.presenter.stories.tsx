@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PopulationChartPresenter } from "./index.presenter";
 
 const meta: Meta<typeof PopulationChartPresenter> = {
-  title: "components/root/LineChartPresenter",
+  title: "components/y/LineChartPresenter",
   component: PopulationChartPresenter,
 };
 
