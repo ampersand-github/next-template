@@ -1,7 +1,6 @@
 import { url } from "@/__shared__/utils/url";
 import { Container } from "@/app/(ct)/y/_components";
 import { env } from "@/env.mjs";
-import React from "react";
 
 const fetchPrefectures = async (apiKey: string, url: string) => {
   const result = await fetch(url, { headers: { "X-API-KEY": apiKey } });
@@ -15,5 +14,5 @@ export default async function Home() {
 
   const prefectures = await fetchPrefectures(apiKey, prefecturesUrl);
 
-  return <Container apiKey={apiKey} prefectures={prefectures}/>;
+  return <Container apiKey={apiKey} prefectures={prefectures} />;
 }
