@@ -12,4 +12,5 @@ export const url = {
   COUNTER: "operation-check/counter",
   MATCHING: "matching/list",
   RESAS_BASE_URL: "https://opendata.resas-portal.go.jp/api/v1",
+  FLOW: "operation-check/flow",
 };

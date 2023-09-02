@@ -31,6 +31,9 @@ export default function Home() {
         <Button asChild>
           <Link href={url.MATCHING}>MATCHING</Link>
         </Button>
+        <Button asChild>
+          <Link href={url.FLOW}>FLOW</Link>
+        </Button>
       </div>
     </main>
   );
