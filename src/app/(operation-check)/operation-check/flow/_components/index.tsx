@@ -1,13 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FlowBuilder, {
+  BuilderContext,
+  IDrawerComponent,
   INode,
   IPopconfirmComponent,
   IPopoverComponent,
-  IRegisterNode,
+  IRegisterNode, useDrawer
 } from "react-flow-builder";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/__shared__/components/ui/popover";
 import { defaultNodes } from "./default-node";
 import {
   ConditionNodeDisplay,
@@ -103,6 +110,12 @@ const DummyPopover: React.FC<IPopoverComponent> = ({
       {children}
       <div className={"bg-white"}>{content}</div>
     </div>
+    <Popover>
+      <PopoverTrigger>{children}</PopoverTrigger>
+      <PopoverContent side={"right"} className={"w-full"}>
+        {content}
+      </PopoverContent>
+    </Popover>
   ) : (
     <div className={overlayClassName} onClick={handleAddNode}>
       {children}
