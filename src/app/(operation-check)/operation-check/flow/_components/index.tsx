@@ -7,7 +7,8 @@ import FlowBuilder, {
   INode,
   IPopconfirmComponent,
   IPopoverComponent,
-  IRegisterNode, useDrawer
+  IRegisterNode,
+  useDrawer,
 } from "react-flow-builder";
 
 import {
@@ -15,6 +16,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/__shared__/components/ui/popover";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/__shared__/components/ui/sheet";
+import ConfigForm from "@/app/(operation-check)/operation-check/flow/_components/config-form";
 import { defaultNodes } from "./default-node";
 import {
   ConditionNodeDisplay,
@@ -42,6 +52,7 @@ const registerNodes: IRegisterNode[] = [
     type: "node",
     name: "単一ノード",
     displayComponent: OtherNodeDisplay,
+    configComponent: ConfigForm,
   },
   {
     type: "condition",
@@ -76,6 +87,7 @@ export const Container = () => {
       registerNodes={registerNodes}
       historyTool
       zoomTool
+      DrawerComponent={DrawerComponent}
       PopconfirmComponent={DummyPopConfirm}
       PopoverComponent={DummyPopover}
     />
@@ -106,10 +118,6 @@ const DummyPopover: React.FC<IPopoverComponent> = ({
   };
 
   return visible ? (
-    <div className={"flex flex-row space-x-2"}>
-      {children}
-      <div className={"bg-white"}>{content}</div>
-    </div>
     <Popover>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent side={"right"} className={"w-full"}>
@@ -120,5 +128,33 @@ const DummyPopover: React.FC<IPopoverComponent> = ({
     <div className={overlayClassName} onClick={handleAddNode}>
       {children}
     </div>
+  );
+};
+
+const DrawerComponent: React.FC<IDrawerComponent> = ({
+  visible,
+  onClose,
+  children,
+}: IDrawerComponent) => {
+  const drawer = useDrawer();
+
+  const context = useContext(BuilderContext);
+  const [isOpen, setOpen] = useState(false);
+
+  return { visible } ? (
+    <Sheet open={isOpen}>
+      <SheetTrigger onClick={() => setOpen(!isOpen)}>Openss</SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+          <SheetDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  ) : (
+    <div>not visible</div>
   );
 };

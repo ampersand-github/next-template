@@ -13,7 +13,11 @@ export const EndNodeDisplay: React.FC = () => {
 
 export const OtherNodeDisplay: React.FC = () => {
   const node = useContext(NodeContext);
-  return <div className="other-node">{node.name}</div>;
+  return (
+    <div className="other-node">
+      <p>{node.name}</p>
+    </div>
+  );
 };
 
 export const ConditionNodeDisplay: React.FC = () => {
