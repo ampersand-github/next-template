@@ -1,6 +1,4 @@
 "use client";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { Button } from "@/__shared__/components/ui/button";
 import { Calendar } from "@/__shared__/components/ui/calendar";
 import {
@@ -8,8 +6,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/__shared__/components/ui/popover";
-import { forwardRef } from "react";
 import { cn } from "@/__shared__/utils/cn";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { forwardRef } from "react";
 
 export const DatePicker = forwardRef<
   HTMLDivElement,
@@ -25,7 +25,7 @@ export const DatePicker = forwardRef<
           variant={"outline"}
           className={cn(
             "w-full justify-start text-left font-normal",
-            !date && "text-muted-foreground",
+            !date && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />

@@ -6,6 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/__shared__/components/ui/select";
+import { cn } from "@/__shared__/utils/cn";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, Trash } from "lucide-react";
 import React from "react";
@@ -40,7 +41,6 @@ import { RadioGroup, RadioGroupItem } from "./radio-group";
 import { Separator } from "./separator";
 import { Switch } from "./switch";
 import { Textarea } from "./textarea";
-import { cn } from "@/__shared__/utils/cn";
 
 /**
  * Beautify a camelCase string.
