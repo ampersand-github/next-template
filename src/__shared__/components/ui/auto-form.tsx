@@ -568,22 +568,24 @@ function AutoFormObject<SchemaType extends z.ZodObject<any, any>>({
 
               return (
                 <ParentElement key={`${key}.parent`}>
-                  <InputComponent
-                    zodInputProps={zodInputProps}
-                    field={field}
-                    fieldConfigItem={fieldConfigItem}
-                    label={itemName}
-                    isRequired={isRequired}
-                    zodItem={item}
-                    fieldProps={{
-                      ...zodInputProps,
-                      ...field,
-                      ...fieldConfigItem.inputProps,
-                      value: !fieldConfigItem.inputProps?.defaultValue
-                        ? field.value ?? ""
-                        : undefined,
-                    }}
-                  />
+                  <div className={"text-left"}>
+                    <InputComponent
+                      zodInputProps={zodInputProps}
+                      field={field}
+                      fieldConfigItem={fieldConfigItem}
+                      label={itemName}
+                      isRequired={isRequired}
+                      zodItem={item}
+                      fieldProps={{
+                        ...zodInputProps,
+                        ...field,
+                        ...fieldConfigItem.inputProps,
+                        value: !fieldConfigItem.inputProps?.defaultValue
+                          ? field.value ?? ""
+                          : undefined,
+                      }}
+                    />
+                  </div>
                 </ParentElement>
               );
             }}
