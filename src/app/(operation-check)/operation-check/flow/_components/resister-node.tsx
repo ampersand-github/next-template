@@ -25,7 +25,7 @@ export const setRegisterNodes = ({ handleChange }: props): IRegisterNode[] => {
     },
     {
       type: "node",
-      name: "単一ノード",
+      name: "タスク",
       displayComponent: () => <OtherNodeDisplay handleChange={handleChange} />,
     },
     {
@@ -35,12 +35,12 @@ export const setRegisterNodes = ({ handleChange }: props): IRegisterNode[] => {
     },
     {
       type: "branch",
-      name: "ブランチノード",
+      name: "分岐タスク",
       conditionNodeType: "condition",
     },
     {
       type: "loop",
-      name: "ループ",
+      name: "ループタスク",
       displayComponent: () => <OtherNodeDisplay handleChange={handleChange} />,
       isLoop: true,
     },

@@ -12,28 +12,29 @@ export const Container = () => {
   const [value, setValue] = useLocalStorage({ key: "nodes" });
   const [nodes, setNodes] = useState<INode[]>(defaultNodes);
 
+  // ローカルストレージから取得した値をセット
   useEffect(() => {
     if (value) setNodes(value);
   }, [value]);
 
+  // データの保存
   const handleChange = (nodes: INode[]) => {
-    console.log("nodes change", nodes);
     setNodes(nodes);
     setValue(nodes);
   };
+
+  // ノードの設定
   const registerNodes = setRegisterNodes({ handleChange });
 
   return (
-    <>
-      <FlowBuilder
-        nodes={nodes}
-        onChange={handleChange}
-        registerNodes={registerNodes}
-        historyTool
-        zoomTool
-        PopconfirmComponent={PopConfirm} // 消すボダンの実装
-        PopoverComponent={ReactFlowPopover} // *ボタンの実装
-      />
-    </>
+    <FlowBuilder
+      nodes={nodes}
+      onChange={handleChange}
+      registerNodes={registerNodes}
+      historyTool
+      zoomTool
+      PopconfirmComponent={PopConfirm} // 消すボダンの実装
+      PopoverComponent={ReactFlowPopover} // *ボタンの実装
+    />
   );
 };
