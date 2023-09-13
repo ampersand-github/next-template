@@ -1,14 +1,20 @@
 import AutoForm, { AutoFormSubmit } from "@/__shared__/components/ui/auto-form";
+import { useState } from "react";
 import { INode } from "react-flow-builder";
 import { z } from "zod";
+import { RichEditor } from "./editor";
 
 type props = {
   initialData: INode | undefined;
   handleSubmit: (data: any) => void;
 };
+
+const assigned: [string, ...string[]] = ["太郎", "次郎", "三郎"];
+const status: [string, ...string[]] = ["未着手", "着手中", "完了"];
+
 export const NodeForm = ({ initialData, handleSubmit }: props) => {
-  const assigned: [string, ...string[]] = ["太郎", "次郎", "三郎"];
-  const status: [string, ...string[]] = ["未着手", "着手中", "完了"];
+  const [editorValue, setEditorValue] = useState("");
+  const handleEditorChange = (value: string) => setEditorValue(value);
 
   const schema = z.object({
     title: z.string().min(1).describe("タスク名"),
@@ -29,7 +35,7 @@ export const NodeForm = ({ initialData, handleSubmit }: props) => {
   return (
     <AutoForm
       onSubmit={(data) => {
-        handleSubmit(data);
+        handleSubmit({ ...data, content: editorValue });
       }}
       formSchema={schema}
       values={value}
@@ -39,6 +45,10 @@ export const NodeForm = ({ initialData, handleSubmit }: props) => {
         status: { fieldType: "select" },
       }}
     >
+      <RichEditor
+        onChange={handleEditorChange}
+        defaultValue={initialData ? initialData.content : ""}
+      />
       <AutoFormSubmit>Submit</AutoFormSubmit>
     </AutoForm>
   );

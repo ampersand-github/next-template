@@ -22,10 +22,12 @@ export const OtherNodeDisplay = ({ handleChange }: props) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleSubmit = (data: INode) => {
+    console.log(data);
     node.title = data.title;
     node.assigned = data.assigned;
     node.deadline = data.deadline;
     node.status = data.status;
+    node.content = data.content;
     setSelectedNode(node);
     const newNodes = nodes.map((n) => {
       if (n.id === node.id) return node;
