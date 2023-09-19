@@ -37,14 +37,14 @@ export const OtherNodeDisplay = ({ handleChange }: props) => {
   };
 
   return (
-    <Sheet open={isOpen} onOpenChange={() => setOpen(!isOpen)}  >
-      <SheetTrigger asChild >
+    <Sheet open={isOpen} onOpenChange={() => setOpen(!isOpen)}>
+      <SheetTrigger asChild>
         <div onClick={() => setOpen(!isOpen)}>
           <NodeUi node={node} />
         </div>
       </SheetTrigger>
-      <SheetContent className={"min-w-full"}  >
-        <SheetHeader >
+      <SheetContent className={"min-w-full"}>
+        <SheetHeader>
           <SheetTitle className={"bg-white text-left"}>タスク</SheetTitle>
           <SheetDescription>
             <NodeForm initialData={node} handleSubmit={handleSubmit} />
