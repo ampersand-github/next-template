@@ -114,7 +114,7 @@ export const RichEditor = ({ onChange, defaultValue }: Props) => {
       TaskItem.configure({
         nested: true,
         HTMLAttributes: {
-          class: " flex  flex-row justify-center text-center items-center",
+          class: "",
         },
       }),
       TaskList.configure({ HTMLAttributes: {} }),
@@ -126,7 +126,7 @@ export const RichEditor = ({ onChange, defaultValue }: Props) => {
       attributes: {
         class: "prose prose-base m-5 focus:outline-none text-left",
       },
-    }
+    },
   });
 
   if (!editor) return null;
