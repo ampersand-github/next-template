@@ -10,7 +10,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 /**
  * @public
  */
-export const FloatingLinkEditor = ({ editor,LowPriority ,getSelectedNode }) => {
+export const FloatingLinkEditor = ({
+  editor,
+  LowPriority,
+  getSelectedNode,
+}) => {
   const editorRef = useRef(null);
   const inputRef = useRef(null);
   const mouseDownRef = useRef(false);
