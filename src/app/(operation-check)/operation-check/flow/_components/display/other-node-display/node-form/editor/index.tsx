@@ -113,9 +113,7 @@ export const RichEditor = ({ onChange, defaultValue }: Props) => {
       }),
       TaskItem.configure({
         nested: true,
-        HTMLAttributes: {
-          class: "",
-        },
+        HTMLAttributes: { class: "" },
       }),
       TaskList.configure({ HTMLAttributes: {} }),
       Link.configure({ openOnClick: true }),
@@ -132,12 +130,12 @@ export const RichEditor = ({ onChange, defaultValue }: Props) => {
   if (!editor) return null;
 
   return (
-    <div>
+    <div className={"space-y-4"}>
       <RichEditorToolbar editor={editor} />
       <EditorContent
         editor={editor}
         className={
-          "flex h-[70vh] justify-start overflow-hidden overflow-y-scroll"
+          "flex min-h-[240px] justify-start overflow-hidden overflow-y-scroll border"
         }
       />
     </div>

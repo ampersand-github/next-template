@@ -43,7 +43,7 @@ export const OtherNodeDisplay = ({ handleChange }: props) => {
           <NodeUi node={node} />
         </div>
       </SheetTrigger>
-      <SheetContent className={"min-w-full"}>
+      <SheetContent className={"min-w-full overflow-auto"}>
         <SheetHeader>
           <SheetTitle className={"bg-white text-left"}>タスク</SheetTitle>
           <SheetDescription>

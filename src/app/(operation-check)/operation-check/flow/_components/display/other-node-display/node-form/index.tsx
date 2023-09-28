@@ -1,8 +1,8 @@
 import AutoForm, { AutoFormSubmit } from "@/__shared__/components/ui/auto-form";
+import { RichEditor2 } from "@/app/(operation-check)/operation-check/flow/_components/display/other-node-display/node-form/editor2";
 import { useState } from "react";
 import { INode } from "react-flow-builder";
 import { z } from "zod";
-import { RichEditor } from "./editor";
 
 type props = {
   initialData: INode | undefined;
@@ -15,6 +15,7 @@ const status: [string, ...string[]] = ["未着手", "着手中", "完了"];
 export const NodeForm = ({ initialData, handleSubmit }: props) => {
   const [editorValue, setEditorValue] = useState("");
   const handleEditorChange = (value: string) => setEditorValue(value);
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const schema = z.object({
     title: z.string().min(1).describe("タスク名"),
@@ -35,7 +36,9 @@ export const NodeForm = ({ initialData, handleSubmit }: props) => {
   return (
     <AutoForm
       onSubmit={(data) => {
+        if (!isSubmitting) return;
         handleSubmit({ ...data, content: editorValue });
+        setSubmitting(false);
       }}
       formSchema={schema}
       values={value}
@@ -45,11 +48,16 @@ export const NodeForm = ({ initialData, handleSubmit }: props) => {
         status: { fieldType: "select" },
       }}
     >
-      <RichEditor
+      <RichEditor2 />
+      {/*
+            <RichEditor
         onChange={handleEditorChange}
         defaultValue={initialData ? initialData.content : ""}
       />
-      <AutoFormSubmit>Submit</AutoFormSubmit>
+      */}
+      <div onClick={() => setSubmitting(true)}>
+        <AutoFormSubmit>Submit</AutoFormSubmit>
+      </div>
     </AutoForm>
   );
 };

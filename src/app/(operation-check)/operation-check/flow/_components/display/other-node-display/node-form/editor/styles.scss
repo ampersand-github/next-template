@@ -9,12 +9,12 @@ ul[data-type="taskList"] {
   li {
     display: flex;
     align-items: center;
-    // background-color: #dafbe1;
+    background-color: #dafbe1;
     margin: 0;
     padding: 0;
 
     > label {
-      // background-color: #bf8700;
+      background-color: #bf8700;
       flex: 0 0 auto;
       padding: 0;
       margin: 0 0.5rem 0 0;
@@ -22,7 +22,7 @@ ul[data-type="taskList"] {
     }
 
     > div {
-      // background-color: #94d3a2;
+      background-color: #94d3a2;
       flex: 1 1 auto;
       margin: 0;
       padding: 0;
