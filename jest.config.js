@@ -6,7 +6,10 @@ module.exports = {
       // tsconfig.jsonのpathsと合わせる
       moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
       testEnvironment: "node",
-      testMatch: ["<rootDir>/src/app/**/*.test.ts"],
+      testMatch: [
+        "<rootDir>/src/app/**/*.test.{ts,tsx}",
+        "<rootDir>/src/__shared__/**/*.test.{ts,tsx}",
+      ],
     },
     {
       preset: "ts-jest",

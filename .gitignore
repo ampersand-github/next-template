@@ -44,3 +44,10 @@ next-template-*.json
 
 # shadcnからインポートされたものは手動で指定したディレクトリに移動すること
 components/ui
+
+storybook-static
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
