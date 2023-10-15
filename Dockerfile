@@ -48,6 +48,7 @@ RUN echo "GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}"
 RUN echo "GCP_PROJECT_ID=${GCP_PROJECT_ID}"
 RUN echo "GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}"
 RUN echo "GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}"
+RUN echo "RESAS_API_KEY=${RESAS_API_KEY}"
 
 # t3-envの関係でこっちで.envを作成する
 RUN echo "NEXT_PUBLIC_ORIGIN=${NEXT_PUBLIC_ORIGIN}" >> .env \
@@ -60,6 +61,7 @@ RUN echo "NEXT_PUBLIC_ORIGIN=${NEXT_PUBLIC_ORIGIN}" >> .env \
     && echo "GCP_PROJECT_ID=${GCP_PROJECT_ID}" >> .env \
     && echo "GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}" >> .env \
     && echo "GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}" >> .env
+    && echo "RESAS_API_KEY=${RESAS_API_KEY}" >> .env
 
 # Generate prisma client
 RUN npx prisma generate
