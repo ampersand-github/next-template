@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    NEXT_RESAS_API_KEY: z.string().min(1),
+    RESAS_API_KEY: z.string().min(1),
     DATABASE_URL: z.string().min(1),
     NEXTAUTH_URL: z.string().url().optional(),
     NEXTAUTH_SECRET: z.string().min(1),
@@ -28,6 +28,6 @@ export const env = createEnv({
     GCP_PROJECT_ID: process.env.GCP_PROJECT_ID,
     GCP_PRIVATE_KEY: process.env.GCP_PRIVATE_KEY,
     GCP_CLIENT_EMAIL: process.env.GCP_CLIENT_EMAIL,
-    NEXT_RESAS_API_KEY: process.env.NEXT_RESAS_API_KEY,
+    RESAS_API_KEY: process.env.RESAS_API_KEY,
   },
 });

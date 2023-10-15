@@ -9,7 +9,7 @@ const fetchPrefectures = async (apiKey: string, url: string) => {
 };
 
 export default async function Home() {
-  const apiKey = env.NEXT_RESAS_API_KEY;
+  const apiKey = env.RESAS_API_KEY;
   const prefecturesUrl = url.RESAS_BASE_URL + "/prefectures";
 
   const prefectures = await fetchPrefectures(apiKey, prefecturesUrl);

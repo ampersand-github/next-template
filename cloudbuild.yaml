@@ -25,6 +25,8 @@ steps:
         "GCP_PRIVATE_KEY=${_GCP_PRIVATE_KEY}",
         "--build-arg",
         "GCP_CLIENT_EMAIL=${_GCP_CLIENT_EMAIL}",
+        "--build-arg",
+        "RESAS_API_KEY=${_RESAS_API_KEY}",
         "-t",
         "${_REGISTRY}",
         ".",
