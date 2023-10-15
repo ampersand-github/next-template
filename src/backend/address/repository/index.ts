@@ -1,8 +1,8 @@
 import { TransactionClient } from "@/__shared__/utils/db";
-import { convertToAddressDomain } from "@/backend/address";
 import { PrismaClient } from "@prisma/client";
 import { UserId } from "../../user";
 import { Address } from "../domain";
+import { convertToAddressDomain } from "@/backend/address";
 
 export class AddressRepository {
   public async isExist(p: PrismaClient, id: UserId): Promise<boolean> {
