@@ -10,8 +10,8 @@ import {
 } from "@/__shared__/components/ui/form";
 import { Textarea } from "@/__shared__/components/ui/textarea";
 import { UseFormReturn } from "react-hook-form";
-import { stepFiveSchema } from "src/app/(ct)/s/step5/_components/index";
 import { z } from "zod";
+import { stepFiveSchema } from "..";
 
 type Props = {
   isRequired: boolean;

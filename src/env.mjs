@@ -12,7 +12,7 @@ export const env = createEnv({
     GITHUB_ACCESS_TOKEN: z.string().min(1),
     GCP_PROJECT_ID: z.string().min(1),
     GCP_PRIVATE_KEY: z.string().min(1),
-    // GCP_CLIENT_EMAIL: z.string().min(1),
+    GCP_CLIENT_EMAIL: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_ORIGIN: z.string().url().min(1),
@@ -27,7 +27,7 @@ export const env = createEnv({
     GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN,
     GCP_PROJECT_ID: process.env.GCP_PROJECT_ID,
     GCP_PRIVATE_KEY: process.env.GCP_PRIVATE_KEY,
-    // GCP_CLIENT_EMAIL: process.env.GCP_CLIENT_EMAIL,
+    GCP_CLIENT_EMAIL: process.env.GCP_CLIENT_EMAIL,
     NEXT_RESAS_API_KEY: process.env.NEXT_RESAS_API_KEY,
   },
 });
