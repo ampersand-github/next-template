@@ -60,7 +60,7 @@ RUN echo "NEXT_PUBLIC_ORIGIN=${NEXT_PUBLIC_ORIGIN}" >> .env \
     && echo "GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}" >> .env \
     && echo "GCP_PROJECT_ID=${GCP_PROJECT_ID}" >> .env \
     && echo "GCP_PRIVATE_KEY=${GCP_PRIVATE_KEY}" >> .env \
-    && echo "GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}" >> .env
+    && echo "GCP_CLIENT_EMAIL=${GCP_CLIENT_EMAIL}" >> .env \
     && echo "RESAS_API_KEY=${RESAS_API_KEY}" >> .env
 
 # Generate prisma client
