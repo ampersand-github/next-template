@@ -42,7 +42,7 @@ export const PrefectureCheckboxFieldPresenter = ({
               "flex flex-row flex-wrap justify-start rounded-md bg-white"
             }
           >
-            {prefectures.map((item) => (
+            {(prefectures || []).map((item) => (
               <FormField
                 key={item.id}
                 control={control}

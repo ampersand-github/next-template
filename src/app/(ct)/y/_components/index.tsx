@@ -16,7 +16,7 @@ export const Container = ({ prefectures, apiKey }: Props) => {
     <main className="flex min-h-screen flex-col space-y-12">
       <Suspense fallback={<Loading />}>
         <div className={"flex flex-wrap justify-center"}>
-          {prefectures.map(
+          {(prefectures || []).map(
             (item: { prefCode: number; prefName: string }, index: number) => (
               <>
                 <PrefecturesCheckBox
